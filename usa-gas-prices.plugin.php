@@ -82,10 +82,10 @@ class USA_Gas_Prices {
     public function run() {
       
       // Register Activation Hook
-      register_activation_hook(UGP_PLUGIN_DIR . 'fuel-savings-calculator-slider.php', array($this, 'activate'));
+      register_activation_hook(UGP_PLUGIN_DIR . 'usa-gas-prices.php', array($this, 'activate'));
 
       // Register Deactivation Hook
-      register_deactivation_hook(UGP_PLUGIN_DIR . 'fuel-savings-calculator-slider.php', array($this, 'deactivate'));
+      register_deactivation_hook(UGP_PLUGIN_DIR . 'usa-gas-prices.php', array($this, 'deactivate'));
 
       // Run all the class hooks
       $this->_ugp_scripts->run();
