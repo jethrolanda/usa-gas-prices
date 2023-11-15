@@ -31,6 +31,25 @@
           &:not(:first-child){
             text-align: center;
           }
+
+          &.value_down:before,
+          &.value_up:before{
+            content: " ";
+            display: inline-block;
+            height: 14px;
+            margin: 0 5px 0 0;
+            position: relative;
+            top: 1px;
+            width: 12px;
+          }
+
+          &.value_down:before{
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 12'%3E%3Cpath fill='%235d9732' d='M1 4.2 5 11l4-6.8H6.6V1H3.4v3.2H1z'/%3E%3C/svg%3E") no-repeat 50%;
+          }
+
+          &.value_up:before{
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 12'%3E%3Cpath fill='%23a33340' d='M9 7.8 5 1 1 7.8h2.4V11h3.2V7.8H9z'/%3E%3C/svg%3E") no-repeat 50%
+          }
         }
       }
     }
