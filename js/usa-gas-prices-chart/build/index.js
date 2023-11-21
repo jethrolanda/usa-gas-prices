@@ -10069,7 +10069,7 @@ function useLineGraphData({
   let columns = ['Date'];
   let rows = [];
   const htmlTooltip = (key, data) => {
-    let html = '<div style="padding: 10px; width: 180px;">' + `<h6>${key}</h6>` + `<p style="padding-bottom: 4px; margin: 0px;">${new Date(data?.period).toLocaleDateString('en-us', {
+    let html = '<div style="padding: 10px; width: 180px;">' + `<b>${key}</b>` + `<p style="padding-bottom: 4px; margin: 0px;">${new Date(data?.period).toLocaleDateString('en-us', {
       year: "numeric",
       month: "short",
       day: "numeric"

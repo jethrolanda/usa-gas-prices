@@ -6,7 +6,7 @@ export default function useLineGraphData({order, orig, list}) {
   const htmlTooltip = (key, data) => {
     
     let html = '<div style="padding: 10px; width: 180px;">' +
-                `<h6>${key}</h6>` +
+                `<b>${key}</b>` +
                 `<p style="padding-bottom: 4px; margin: 0px;">${new Date(data?.period).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})}</p>` +
                 `<p style="padding-bottom: 4px; margin: 0px;">${data?.value} dollars per gallon</p>` +
                 '</div>';
