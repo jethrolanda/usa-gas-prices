@@ -25,7 +25,7 @@ const App = ({attributes}) => {
   }, []);
   
   return <>
-      <h6>{title}</h6>
+      <p style={{fontWeight:'bold', margin: '0px'}}>{title}</p>
       <span>{attributes?.subtitle}</span>
       <Checkboxes location={attributes?.location} attributes={attributes}/>
       <Chart

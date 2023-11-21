@@ -9913,7 +9913,12 @@ const App = ({
       }));
     }
   }, []);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    style: {
+      fontWeight: 'bold',
+      margin: '0px'
+    }
+  }, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
     location: attributes?.location,
     attributes: attributes
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_4__.Chart, {
