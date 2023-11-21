@@ -9897,83 +9897,26 @@ const App = ({
   const dispatch = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useDispatch)();
   const data = (0,react_redux__WEBPACK_IMPORTED_MODULE_3__.useSelector)(state => attributes?.type == 'gasoline' ? state.chartState.gasoline.chartData : state.chartState.diesel.chartData);
   const title = attributes?.type == 'gasoline' ? attributes?.gasoline?.title : attributes?.diesel?.title;
-  const chartEvents = [{
-    eventName: 'select',
-    callback({
-      chartWrapper
-    }) {
-      console.log(chartWrapper, chartWrapper.getChart());
-      chartWrapper.getChart().hideColumns([1, 2]);
-      // hideColumns: [1, 2]
-      // const selectedItems = chartWrapper.getChart().getSelection();
-      // if (selectedItems.length > 0) {
-      //     const selectedItem = selectedItems[0];
-      //     const row = selectedItem.row + 1;
-      //     const dataPoint = data[row];
-      //     alert(`You clicked on category ${dataPoint[0]} with profit ${dataPoint[1]}`);
-      // }
-    }
-  }];
-
-  const htmlTooltip = (key, data) => {
-    let html = '<div style="padding: 10px; width: 180px;">' + `<h6>${key}</h6>` + `<p style="padding-bottom: 4px; margin: 0px;">${data?.period}</p>` + `<p style="padding-bottom: 4px; margin: 0px;">${data?.value} dollars per gallon</p>` + '</div>';
-    console.log(html);
-    return html;
-  };
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (attributes?.type == 'gasoline') {
       dispatch((0,_store_reducer_chartSlice__WEBPACK_IMPORTED_MODULE_2__.fetchGasolineYearData)({
         cb: ({
           order,
           orig
-        }) => {
-          // let columns = ['Date'];
-          // let rows = [];
-          // let data = [];
-          // Object.keys(order).map((loc, index)=> {
-
-          //   columns = [...columns, loc, {type: 'string', role: 'tooltip', p:{html:true, role: 'tooltip'}}]
-          // })
-
-          // let total = orig['U.S.'].length;
-          //   for(let i = 0; i < total; i++){
-          //       let temp = [orig['U.S.'][i]?.period];
-          //       Object.keys(order).map((loc)=>{
-          //         let key = order[loc];
-          //         temp = [...temp, orig[key][i]?.value];
-          //         temp = [...temp, htmlTooltip(loc, orig[key][i])];
-          //       });
-
-          //       rows = [...rows, temp];
-          //   }
-          // data = [columns, ...rows];
-        }
+        }) => {}
       }));
     } else {
       dispatch((0,_store_reducer_chartSlice__WEBPACK_IMPORTED_MODULE_2__.fetchDieselYearData)({
         cb: ({
           order
-        }) => {
-          // Object.keys(order).map((loc, index)=> {
-          //   console.log(loc)
-          // })
-        }
+        }) => {}
       }));
     }
   }, []);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, title, " ", (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle)), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
     location: attributes?.location,
     attributes: attributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_4__.Chart
-  // data={[
-  //   ["Year", "ASD", "Expenses"],
-  //   ["2004", 0, 2],
-  //   ["2005", 0, 1],
-  //   ["2006", 0, 3],
-  //   ["2007", 0, 2],
-  // ]}
-  // chartEvents={chartEvents}
-  , {
+  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_4__.Chart, {
     chartType: "LineChart",
     width: "100%",
     height: "400px",
@@ -9987,11 +9930,11 @@ const App = ({
         isHtml: true
       },
       vAxis: {
-        // logScale: true,
-        // scaleType: 'log',
-        // gridlines: { 
-        //   minSpacing: attributes?.type == 'gasoline' ? 5 : 17
-        // },
+        logScale: true,
+        scaleType: 'log',
+        gridlines: {
+          minSpacing: attributes?.type == 'gasoline' ? 5 : 17
+        },
         minorGridlines: {
           color: 'transparent'
         }
@@ -10120,11 +10063,14 @@ function useLineGraphData({
   orig,
   list
 }) {
-  // console.log(order, orig, list)
   let columns = ['Date'];
   let rows = [];
   const htmlTooltip = (key, data) => {
-    let html = '<div style="padding: 10px; width: 180px;">' + `<h6>${key}</h6>` + `<p style="padding-bottom: 4px; margin: 0px;">${data?.period}</p>` + `<p style="padding-bottom: 4px; margin: 0px;">${data?.value} dollars per gallon</p>` + '</div>';
+    let html = '<div style="padding: 10px; width: 180px;">' + `<h6>${key}</h6>` + `<p style="padding-bottom: 4px; margin: 0px;">${new Date(data?.period).toLocaleDateString('en-us', {
+      year: "numeric",
+      month: "short",
+      day: "numeric"
+    })}</p>` + `<p style="padding-bottom: 4px; margin: 0px;">${data?.value} dollars per gallon</p>` + '</div>';
     return html;
   };
   if (typeof list !== 'undefined') {

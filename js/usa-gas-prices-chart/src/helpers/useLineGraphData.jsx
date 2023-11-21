@@ -1,5 +1,5 @@
 export default function useLineGraphData({order, orig, list}) {
-  // console.log(order, orig, list)
+  
   let columns = ['Date'];
   let rows = [];
 
@@ -7,7 +7,7 @@ export default function useLineGraphData({order, orig, list}) {
     
     let html = '<div style="padding: 10px; width: 180px;">' +
                 `<h6>${key}</h6>` +
-                `<p style="padding-bottom: 4px; margin: 0px;">${data?.period}</p>` +
+                `<p style="padding-bottom: 4px; margin: 0px;">${new Date(data?.period).toLocaleDateString('en-us', {year:"numeric", month:"short", day:"numeric"})}</p>` +
                 `<p style="padding-bottom: 4px; margin: 0px;">${data?.value} dollars per gallon</p>` +
                 '</div>';
     return html;
