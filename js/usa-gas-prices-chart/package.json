@@ -15,11 +15,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
-    "antd": "^5.10.2",
+    "antd": "^5.11.2",
     "axios": "^1.5.1",
     "react-google-charts": "^4.0.1",
-    "react-highlight-words": "^0.20.0",
-    "react-quill": "^2.0.0",
     "react-redux": "^8.1.3"
   }
 }

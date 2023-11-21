@@ -9,10 +9,19 @@ import store from "./store";
 import '../style/main.scss';
  
 // Render the App component into the DOM
-render(  
-  <Provider store={store}>
-        <App />
-    </Provider>, 
-  document.getElementById('usa-gas-prices-chart')
-);
+// render(  
+//   <Provider store={store}>
+//         <App />
+//     </Provider>, 
+//   document.querySelectorAll('.usa-gas-prices-chart')
+// );
   
+document.querySelectorAll('.usa-gas-prices-chart')
+  .forEach((domContainer) => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <App attributes={JSON.parse(domContainer.attributes['data-gas-prices-attr'].value)} />
+      </Provider>,
+      domContainer
+    );
+  });

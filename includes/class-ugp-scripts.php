@@ -45,7 +45,7 @@ class UGP_Scripts
 
         if($post && $post->ID){
             $shortcodes = get_post_meta( $post->ID, "ct_builder_shortcodes", true );
-            if(strpos($shortcodes, '[usa_gas_prices_chart]') !== false) {
+            if(strpos($shortcodes, 'usa_gas_prices_chart') !== false) {
                 $chart_shortcode_exist = true;
             }
             if(strpos($shortcodes, '[usa_gasoline_prices_table]') !== false ||strpos($shortcodes, '[usa_diesel_prices_table]') !== false) {
@@ -66,6 +66,14 @@ class UGP_Scripts
                 'nonce' => wp_create_nonce( 'wp_rest' ),
                 'ajax_url' => admin_url('admin-ajax.php'),
                 'settings_nonce' => wp_create_nonce( 'settings_nonce' ),
+                'gasoline_shortcode' => array(
+                    'title' => 'Regular Gasoline Prices',
+                    'tagline' => '(dollars per gallon)'
+                ),
+                'diesel_shortcode' => array(
+                    'title' => 'On-Highway Diesel Prices',
+                    'tagline' => '(dollars per gallon)'
+                ),
             ));
             
         }
