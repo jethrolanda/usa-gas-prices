@@ -9913,7 +9913,7 @@ const App = ({
       }));
     }
   }, []);
-  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h4", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h6", null, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
     location: attributes?.location,
     attributes: attributes
   }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_4__.Chart, {
@@ -10017,7 +10017,10 @@ const Checkboxes = ({
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_4__["default"].Group, {
     options: options,
     value: checked,
-    onChange: onChange
+    onChange: onChange,
+    style: {
+      color: '#A2CC3A'
+    }
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Checkboxes);

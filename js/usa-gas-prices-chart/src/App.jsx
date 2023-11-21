@@ -25,7 +25,7 @@ const App = ({attributes}) => {
   }, []);
   
   return <>
-      <h4>{title}</h4>
+      <h6>{title}</h6>
       <span>{attributes?.subtitle}</span>
       <Checkboxes location={attributes?.location} attributes={attributes}/>
       <Chart

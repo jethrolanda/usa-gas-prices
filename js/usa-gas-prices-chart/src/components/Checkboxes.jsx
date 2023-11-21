@@ -42,6 +42,6 @@ const Checkboxes = ({location, attributes}) => {
     setChecked(selected);
   }, []);
 
-  return <Checkbox.Group options={options} value={checked} onChange={onChange}/>;
+  return <Checkbox.Group options={options} value={checked} onChange={onChange} style={{color: '#A2CC3A'}}/>;
 };
 export default Checkboxes;
