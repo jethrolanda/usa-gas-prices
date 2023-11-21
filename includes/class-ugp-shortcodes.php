@@ -104,7 +104,7 @@ class UGP_Shortcodes
         
         ?><div class="wrap">
             <div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars( json_encode( $atts ), ENT_QUOTES, 'UTF-8' ); ?>">
-                <h2>Loading...</h2>
+                <span>Loading...</span>
             </div>
         </div><?php
     }
