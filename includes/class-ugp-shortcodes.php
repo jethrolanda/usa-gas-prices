@@ -21,7 +21,7 @@ class UGP_Shortcodes
      */
     protected static $_instance = null;
 
-    private $location = array('U.S.' => 'U.S.', 'East Coast' => 'PADD 1', 'New England' => 'PADD 1A', 'Central Atlantic'=> 'PADD 1B', 'Lower Atlantic' => 'PADD 1C', 'Midwest' => 'PADD 2', 'Gulf Coast' => 'PADD 3', 'Rocky Mountain' => 'PADD 4', 'West Coast' => 'PADD 5', 'California' => 'PADD 5 EXCEPT CALIFORNIA');
+    private $location = array('U.S.' => 'U.S.', 'East Coast' => 'PADD 1', 'New England' => 'PADD 1A', 'Central Atlantic'=> 'PADD 1B', 'Lower Atlantic' => 'PADD 1C', 'Midwest' => 'PADD 2', 'Gulf Coast' => 'PADD 3', 'Rocky Mountain' => 'PADD 4', 'West Coast' => 'PADD 5', 'California' => 'CALIFORNIA');
 
     /**
      * Main Instance.
@@ -172,8 +172,8 @@ class UGP_Shortcodes
             $monday = date('Y-m-d',strtotime("last Monday"));
             $last_year = date('Y-m-d',strtotime('- 1 year', strtotime("last Monday")));
 
-            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_R5XCA_DPG&start='.$last_year.'&end='.$monday);
-
+            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_SCA_DPG&start='.$last_year.'&end='.$monday);
+            error_log(print_r($data,true));
             $data2 = array();
             
             $total = count($data['U.S.']);
@@ -306,9 +306,11 @@ class UGP_Shortcodes
 
         // Fetch gasonline prices over the year via ajax 
         add_action("wp_ajax_ugp_get_gasoline_year_data", array($this, 'ugp_get_gasoline_year_data'));
-
+        add_action("wp_ajax_nopriv_ugp_get_gasoline_year_data", array($this, 'ugp_get_gasoline_year_data'));
+        
         // Fetch diesel prices over the year via ajax 
         add_action("wp_ajax_ugp_get_diesel_year_data", array($this, 'ugp_get_diesel_year_data'));
+        add_action("wp_ajax_nopriv_ugp_get_diesel_year_data", array($this, 'ugp_get_diesel_year_data'));
 
     }
     
