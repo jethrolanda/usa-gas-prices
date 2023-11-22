@@ -18,7 +18,7 @@ import '../style/main.scss';
   
 document.querySelectorAll('.usa-gas-prices-chart')
   .forEach((domContainer) => {
-    ReactDOM.render(
+    render(
       <Provider store={store}>
         <App attributes={JSON.parse(domContainer.attributes['data-gas-prices-attr'].value)} />
       </Provider>,

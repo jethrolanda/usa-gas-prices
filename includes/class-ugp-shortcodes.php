@@ -102,11 +102,15 @@ class UGP_Shortcodes
             'location' => $this->location
         ), $atts );
         
-        ?><div class="wrap">
-            <div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars( json_encode( $atts ), ENT_QUOTES, 'UTF-8' ); ?>">
-                <span>Loading...</span>
-            </div>
+        ob_start();
+
+        ?><div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars( json_encode( $atts ), ENT_QUOTES, 'UTF-8' ); ?>">
+            <span>Loading...</span>
         </div><?php
+
+        $content = ob_get_clean();
+        return $content;
+
     }
 
     /**
@@ -173,31 +177,9 @@ class UGP_Shortcodes
             $last_year = date('Y-m-d',strtotime('- 1 year', strtotime("last Monday")));
 
             $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_SCA_DPG&start='.$last_year.'&end='.$monday);
-            error_log(print_r($data,true));
-            $data2 = array();
             
-            $total = count($data['U.S.']);
-            for($i = 0; $i < $total; $i++){
-                $temp = array($data['U.S.'][$i]->period);
-                foreach($this->location as $key => $loc){
-                    $temp[] = $data[$loc][$i]->value;
-                    $temp[] = $this->html_tooltip($key, $data[$loc][$i]);
-                }
-                $data2[$i] = $temp;
-            }
-            
-            $columns = array_keys($this->location);
-            $columns2 = array('Date');
-            foreach($columns as $col){
-                $columns2[] = $col;
-                $columns2[] = array( 'type' => 'string', 'role' => 'tooltip', 'p' => array( 'html' => true, 'role' => 'tooltip') );
-            }
-            
-            array_unshift($data2, $columns2 );
-// error_log(print_r($columns2,true));
             wp_send_json(array(
                 'status' => 'success',
-                'data' => $data2,
                 'orig' => $data,
                 'order' => $this->location
             ));
@@ -248,30 +230,8 @@ class UGP_Shortcodes
 
             $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R10_DPG&facets[series][]=EMD_EPD2D_PTE_R1X_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R1Y_DPG&facets[series][]=EMD_EPD2D_PTE_R1Z_DPG&facets[series][]=EMD_EPD2D_PTE_R20_DPG&facets[series][]=EMD_EPD2D_PTE_R30_DPG&facets[series][]=EMD_EPD2D_PTE_R40_DPG&facets[series][]=EMD_EPD2D_PTE_R50_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R5XCA_DPG&facets[series][]=EMD_EPD2DXL0_PTE_SCA_DPG&start='.$last_year.'&end='.$monday);
 
-            // $data2 = array();
-            
-            // $total = count($data['U.S.']);
-            // for($i = 0; $i < $total; $i++){
-            //     $temp = array($data['U.S.'][$i]->period);
-            //     foreach($this->location as $key => $loc){
-            //         $temp[] = $data[$loc][$i]->value;
-            //         $temp[] = $this->html_tooltip($key, $data[$loc][$i]);
-            //     }
-            //     $data2[$i] = $temp;
-            // }
-            
-            // $columns = array_keys($this->location);
-            // $columns2 = array('Date');
-            // foreach($columns as $col){
-            //     $columns2[] = $col;
-            //     $columns2[] = array( 'type' => 'string', 'role' => 'tooltip', 'p' => array( 'html' => true, 'role' => 'tooltip') );
-            // }
-            
-            // array_unshift($data2, $columns2 );
-// error_log(print_r($columns2,true));
             wp_send_json(array(
                 'status' => 'success',
-                // 'data' => $data2,
                 'orig' => $data,
                 'order' => $this->location
             ));
@@ -285,6 +245,33 @@ class UGP_Shortcodes
   
         }
         
+    }
+
+    /**
+     * Display current average gas prices
+     *
+     * @since 1.0
+     * @access public
+     */
+    public function display_current_average_price_shortcode($atts) {
+        $atts = shortcode_atts( array(
+            'type' => 'gas'
+        ), $atts );
+        
+        extract($atts);
+        ob_start();
+        
+        ?><div class="todays-gas-price-average">
+            <div>
+                <h5><?php echo $type == 'gas' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></h5>
+                <p><?php echo $type == 'gas' ? 'NATIONAL AVERAGE GASOLINE PRICE' : 'NATIONAL AVERAGE ROAD DIESEL PRICE'; ?></p>
+                <p>AS OF <?php echo date('m/d/y'); ?></p>
+            </div>
+            <div><?php echo $type == 'gas' ? '$3.23' : '$4.09';?></div>
+        </div><?php
+
+        $content = ob_get_clean();
+        return $content;
     }
 
     /**
@@ -311,6 +298,9 @@ class UGP_Shortcodes
         // Fetch diesel prices over the year via ajax 
         add_action("wp_ajax_ugp_get_diesel_year_data", array($this, 'ugp_get_diesel_year_data'));
         add_action("wp_ajax_nopriv_ugp_get_diesel_year_data", array($this, 'ugp_get_diesel_year_data'));
+
+        // Current Gas and Diesel price shortcode
+        add_shortcode('display_current_average_price', array($this, 'display_current_average_price_shortcode'));
 
     }
     

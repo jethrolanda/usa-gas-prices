@@ -2396,6 +2396,412 @@ function supportLogicProps() {
 
 /***/ }),
 
+/***/ "./node_modules/@ant-design/icons-svg/es/asn/LoadingOutlined.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons-svg/es/asn/LoadingOutlined.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+// This icon file is generated automatically.
+var LoadingOutlined = { "icon": { "tag": "svg", "attrs": { "viewBox": "0 0 1024 1024", "focusable": "false" }, "children": [{ "tag": "path", "attrs": { "d": "M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 00-94.3-139.9 437.71 437.71 0 00-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z" } }] }, "name": "loading", "theme": "outlined" };
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (LoadingOutlined);
+
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/components/AntdIcon.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/components/AntdIcon.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime/helpers/esm/defineProperty */ "./node_modules/@babel/runtime/helpers/esm/defineProperty.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _ant_design_colors__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ant-design/colors */ "./node_modules/@ant-design/colors/es/index.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./Context */ "./node_modules/@ant-design/icons/es/components/Context.js");
+/* harmony import */ var _IconBase__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./IconBase */ "./node_modules/@ant-design/icons/es/components/IconBase.js");
+/* harmony import */ var _twoTonePrimaryColor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./twoTonePrimaryColor */ "./node_modules/@ant-design/icons/es/components/twoTonePrimaryColor.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils */ "./node_modules/@ant-design/icons/es/utils.js");
+'use client';
+
+
+
+
+
+var _excluded = ["className", "icon", "spin", "rotate", "tabIndex", "onClick", "twoToneColor"];
+
+
+
+
+
+
+
+// Initial setting
+// should move it to antd main repo?
+(0,_twoTonePrimaryColor__WEBPACK_IMPORTED_MODULE_7__.setTwoToneColor)(_ant_design_colors__WEBPACK_IMPORTED_MODULE_6__.blue.primary);
+
+// https://github.com/DefinitelyTyped/DefinitelyTyped/issues/34757#issuecomment-488848720
+
+var Icon = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.forwardRef(function (props, ref) {
+  var _classNames;
+  var className = props.className,
+    icon = props.icon,
+    spin = props.spin,
+    rotate = props.rotate,
+    tabIndex = props.tabIndex,
+    onClick = props.onClick,
+    twoToneColor = props.twoToneColor,
+    restProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_3__["default"])(props, _excluded);
+  var _React$useContext = react__WEBPACK_IMPORTED_MODULE_4__.useContext(_Context__WEBPACK_IMPORTED_MODULE_8__["default"]),
+    _React$useContext$pre = _React$useContext.prefixCls,
+    prefixCls = _React$useContext$pre === void 0 ? 'anticon' : _React$useContext$pre,
+    rootClassName = _React$useContext.rootClassName;
+  var classString = classnames__WEBPACK_IMPORTED_MODULE_5___default()(rootClassName, prefixCls, (_classNames = {}, (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-").concat(icon.name), !!icon.name), (0,_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_2__["default"])(_classNames, "".concat(prefixCls, "-spin"), !!spin || icon.name === 'loading'), _classNames), className);
+  var iconTabIndex = tabIndex;
+  if (iconTabIndex === undefined && onClick) {
+    iconTabIndex = -1;
+  }
+  var svgStyle = rotate ? {
+    msTransform: "rotate(".concat(rotate, "deg)"),
+    transform: "rotate(".concat(rotate, "deg)")
+  } : undefined;
+  var _normalizeTwoToneColo = (0,_utils__WEBPACK_IMPORTED_MODULE_9__.normalizeTwoToneColors)(twoToneColor),
+    _normalizeTwoToneColo2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_normalizeTwoToneColo, 2),
+    primaryColor = _normalizeTwoToneColo2[0],
+    secondaryColor = _normalizeTwoToneColo2[1];
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement("span", (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    role: "img",
+    "aria-label": icon.name
+  }, restProps, {
+    ref: ref,
+    tabIndex: iconTabIndex,
+    onClick: onClick,
+    className: classString
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_4__.createElement(_IconBase__WEBPACK_IMPORTED_MODULE_10__["default"], {
+    icon: icon,
+    primaryColor: primaryColor,
+    secondaryColor: secondaryColor,
+    style: svgStyle
+  }));
+});
+Icon.displayName = 'AntdIcon';
+Icon.getTwoToneColor = _twoTonePrimaryColor__WEBPACK_IMPORTED_MODULE_7__.getTwoToneColor;
+Icon.setTwoToneColor = _twoTonePrimaryColor__WEBPACK_IMPORTED_MODULE_7__.setTwoToneColor;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Icon);
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/components/Context.js":
+/*!*****************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/components/Context.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var IconContext = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.createContext)({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconContext);
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/components/IconBase.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/components/IconBase.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectWithoutProperties */ "./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js");
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils */ "./node_modules/@ant-design/icons/es/utils.js");
+
+
+var _excluded = ["icon", "className", "onClick", "style", "primaryColor", "secondaryColor"];
+
+
+var twoToneColorPalette = {
+  primaryColor: '#333',
+  secondaryColor: '#E6E6E6',
+  calculated: false
+};
+function setTwoToneColors(_ref) {
+  var primaryColor = _ref.primaryColor,
+    secondaryColor = _ref.secondaryColor;
+  twoToneColorPalette.primaryColor = primaryColor;
+  twoToneColorPalette.secondaryColor = secondaryColor || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getSecondaryColor)(primaryColor);
+  twoToneColorPalette.calculated = !!secondaryColor;
+}
+function getTwoToneColors() {
+  return (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, twoToneColorPalette);
+}
+var IconBase = function IconBase(props) {
+  var icon = props.icon,
+    className = props.className,
+    onClick = props.onClick,
+    style = props.style,
+    primaryColor = props.primaryColor,
+    secondaryColor = props.secondaryColor,
+    restProps = (0,_babel_runtime_helpers_esm_objectWithoutProperties__WEBPACK_IMPORTED_MODULE_0__["default"])(props, _excluded);
+  var svgRef = react__WEBPACK_IMPORTED_MODULE_2__.useRef();
+  var colors = twoToneColorPalette;
+  if (primaryColor) {
+    colors = {
+      primaryColor: primaryColor,
+      secondaryColor: secondaryColor || (0,_utils__WEBPACK_IMPORTED_MODULE_3__.getSecondaryColor)(primaryColor)
+    };
+  }
+  (0,_utils__WEBPACK_IMPORTED_MODULE_3__.useInsertStyles)(svgRef);
+  (0,_utils__WEBPACK_IMPORTED_MODULE_3__.warning)((0,_utils__WEBPACK_IMPORTED_MODULE_3__.isIconDefinition)(icon), "icon should be icon definiton, but got ".concat(icon));
+  if (!(0,_utils__WEBPACK_IMPORTED_MODULE_3__.isIconDefinition)(icon)) {
+    return null;
+  }
+  var target = icon;
+  if (target && typeof target.icon === 'function') {
+    target = (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({}, target), {}, {
+      icon: target.icon(colors.primaryColor, colors.secondaryColor)
+    });
+  }
+  return (0,_utils__WEBPACK_IMPORTED_MODULE_3__.generate)(target.icon, "svg-".concat(target.name), (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    className: className,
+    onClick: onClick,
+    style: style,
+    'data-icon': target.name,
+    width: '1em',
+    height: '1em',
+    fill: 'currentColor',
+    'aria-hidden': 'true'
+  }, restProps), {}, {
+    ref: svgRef
+  }));
+};
+IconBase.displayName = 'IconReact';
+IconBase.getTwoToneColors = getTwoToneColors;
+IconBase.setTwoToneColors = setTwoToneColors;
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (IconBase);
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/components/twoTonePrimaryColor.js":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/components/twoTonePrimaryColor.js ***!
+  \*****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getTwoToneColor: () => (/* binding */ getTwoToneColor),
+/* harmony export */   setTwoToneColor: () => (/* binding */ setTwoToneColor)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
+/* harmony import */ var _IconBase__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./IconBase */ "./node_modules/@ant-design/icons/es/components/IconBase.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils */ "./node_modules/@ant-design/icons/es/utils.js");
+
+
+
+function setTwoToneColor(twoToneColor) {
+  var _normalizeTwoToneColo = (0,_utils__WEBPACK_IMPORTED_MODULE_1__.normalizeTwoToneColors)(twoToneColor),
+    _normalizeTwoToneColo2 = (0,_babel_runtime_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__["default"])(_normalizeTwoToneColo, 2),
+    primaryColor = _normalizeTwoToneColo2[0],
+    secondaryColor = _normalizeTwoToneColo2[1];
+  return _IconBase__WEBPACK_IMPORTED_MODULE_2__["default"].setTwoToneColors({
+    primaryColor: primaryColor,
+    secondaryColor: secondaryColor
+  });
+}
+function getTwoToneColor() {
+  var colors = _IconBase__WEBPACK_IMPORTED_MODULE_2__["default"].getTwoToneColors();
+  if (!colors.calculated) {
+    return colors.primaryColor;
+  }
+  return [colors.primaryColor, colors.secondaryColor];
+}
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/icons/LoadingOutlined.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/icons/LoadingOutlined.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ "./node_modules/@babel/runtime/helpers/esm/extends.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ant_design_icons_svg_es_asn_LoadingOutlined__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ant-design/icons-svg/es/asn/LoadingOutlined */ "./node_modules/@ant-design/icons-svg/es/asn/LoadingOutlined.js");
+/* harmony import */ var _components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AntdIcon */ "./node_modules/@ant-design/icons/es/components/AntdIcon.js");
+
+// GENERATE BY ./scripts/generate.ts
+// DON NOT EDIT IT MANUALLY
+
+
+
+
+var LoadingOutlined = function LoadingOutlined(props, ref) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_components_AntdIcon__WEBPACK_IMPORTED_MODULE_2__["default"], (0,_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({}, props, {
+    ref: ref,
+    icon: _ant_design_icons_svg_es_asn_LoadingOutlined__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+if (true) {
+  LoadingOutlined.displayName = 'LoadingOutlined';
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.forwardRef(LoadingOutlined));
+
+/***/ }),
+
+/***/ "./node_modules/@ant-design/icons/es/utils.js":
+/*!****************************************************!*\
+  !*** ./node_modules/@ant-design/icons/es/utils.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   generate: () => (/* binding */ generate),
+/* harmony export */   getSecondaryColor: () => (/* binding */ getSecondaryColor),
+/* harmony export */   iconStyles: () => (/* binding */ iconStyles),
+/* harmony export */   isIconDefinition: () => (/* binding */ isIconDefinition),
+/* harmony export */   normalizeAttrs: () => (/* binding */ normalizeAttrs),
+/* harmony export */   normalizeTwoToneColors: () => (/* binding */ normalizeTwoToneColors),
+/* harmony export */   svgBaseProps: () => (/* binding */ svgBaseProps),
+/* harmony export */   useInsertStyles: () => (/* binding */ useInsertStyles),
+/* harmony export */   warning: () => (/* binding */ warning)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/objectSpread2 */ "./node_modules/@babel/runtime/helpers/esm/objectSpread2.js");
+/* harmony import */ var _babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/typeof */ "./node_modules/@babel/runtime/helpers/esm/typeof.js");
+/* harmony import */ var _ant_design_colors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ant-design/colors */ "./node_modules/@ant-design/colors/es/index.js");
+/* harmony import */ var rc_util_es_Dom_dynamicCSS__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rc-util/es/Dom/dynamicCSS */ "./node_modules/rc-util/es/Dom/dynamicCSS.js");
+/* harmony import */ var rc_util_es_Dom_shadow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rc-util/es/Dom/shadow */ "./node_modules/rc-util/es/Dom/shadow.js");
+/* harmony import */ var rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rc-util/es/warning */ "./node_modules/rc-util/es/warning.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_Context__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Context */ "./node_modules/@ant-design/icons/es/components/Context.js");
+
+
+
+
+
+
+
+
+function camelCase(input) {
+  return input.replace(/-(.)/g, function (match, g) {
+    return g.toUpperCase();
+  });
+}
+function warning(valid, message) {
+  (0,rc_util_es_warning__WEBPACK_IMPORTED_MODULE_5__["default"])(valid, "[@ant-design/icons] ".concat(message));
+}
+function isIconDefinition(target) {
+  return (0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__["default"])(target) === 'object' && typeof target.name === 'string' && typeof target.theme === 'string' && ((0,_babel_runtime_helpers_esm_typeof__WEBPACK_IMPORTED_MODULE_1__["default"])(target.icon) === 'object' || typeof target.icon === 'function');
+}
+function normalizeAttrs() {
+  var attrs = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  return Object.keys(attrs).reduce(function (acc, key) {
+    var val = attrs[key];
+    switch (key) {
+      case 'class':
+        acc.className = val;
+        delete acc.class;
+        break;
+      default:
+        delete acc[key];
+        acc[camelCase(key)] = val;
+    }
+    return acc;
+  }, {});
+}
+function generate(node, key, rootProps) {
+  if (!rootProps) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(node.tag, (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({
+      key: key
+    }, normalizeAttrs(node.attrs)), (node.children || []).map(function (child, index) {
+      return generate(child, "".concat(key, "-").concat(node.tag, "-").concat(index));
+    }));
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default().createElement(node.tag, (0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__["default"])({
+    key: key
+  }, normalizeAttrs(node.attrs)), rootProps), (node.children || []).map(function (child, index) {
+    return generate(child, "".concat(key, "-").concat(node.tag, "-").concat(index));
+  }));
+}
+function getSecondaryColor(primaryColor) {
+  // choose the second color
+  return (0,_ant_design_colors__WEBPACK_IMPORTED_MODULE_2__.generate)(primaryColor)[0];
+}
+function normalizeTwoToneColors(twoToneColor) {
+  if (!twoToneColor) {
+    return [];
+  }
+  return Array.isArray(twoToneColor) ? twoToneColor : [twoToneColor];
+}
+
+// These props make sure that the SVG behaviours like general text.
+// Reference: https://blog.prototypr.io/align-svg-icons-to-text-and-say-goodbye-to-font-icons-d44b3d7b26b4
+var svgBaseProps = {
+  width: '1em',
+  height: '1em',
+  fill: 'currentColor',
+  'aria-hidden': 'true',
+  focusable: 'false'
+};
+var iconStyles = "\n.anticon {\n  display: inline-block;\n  color: inherit;\n  font-style: normal;\n  line-height: 0;\n  text-align: center;\n  text-transform: none;\n  vertical-align: -0.125em;\n  text-rendering: optimizeLegibility;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.anticon > * {\n  line-height: 1;\n}\n\n.anticon svg {\n  display: inline-block;\n}\n\n.anticon::before {\n  display: none;\n}\n\n.anticon .anticon-icon {\n  display: block;\n}\n\n.anticon[tabindex] {\n  cursor: pointer;\n}\n\n.anticon-spin::before,\n.anticon-spin {\n  display: inline-block;\n  -webkit-animation: loadingCircle 1s infinite linear;\n  animation: loadingCircle 1s infinite linear;\n}\n\n@-webkit-keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes loadingCircle {\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n";
+var useInsertStyles = function useInsertStyles(eleRef) {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_6__.useContext)(_components_Context__WEBPACK_IMPORTED_MODULE_7__["default"]),
+    csp = _useContext.csp,
+    prefixCls = _useContext.prefixCls;
+  var mergedStyleStr = iconStyles;
+  if (prefixCls) {
+    mergedStyleStr = mergedStyleStr.replace(/anticon/g, prefixCls);
+  }
+  (0,react__WEBPACK_IMPORTED_MODULE_6__.useEffect)(function () {
+    var ele = eleRef.current;
+    var shadowRoot = (0,rc_util_es_Dom_shadow__WEBPACK_IMPORTED_MODULE_4__.getShadowRoot)(ele);
+    (0,rc_util_es_Dom_dynamicCSS__WEBPACK_IMPORTED_MODULE_3__.updateCSS)(mergedStyleStr, '@ant-design-icons', {
+      prepend: true,
+      csp: csp,
+      attachTo: shadowRoot
+    });
+  }, []);
+};
+
+/***/ }),
+
 /***/ "./node_modules/@ctrl/tinycolor/dist/module/conversion.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@ctrl/tinycolor/dist/module/conversion.js ***!
@@ -7099,6 +7505,433 @@ const NoFormStyle = _ref => {
 
 /***/ }),
 
+/***/ "./node_modules/antd/es/spin/index.js":
+/*!********************************************!*\
+  !*** ./node_modules/antd/es/spin/index.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! classnames */ "./node_modules/classnames/index.js");
+/* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var rc_util_es_omit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rc-util/es/omit */ "./node_modules/rc-util/es/omit.js");
+/* harmony import */ var throttle_debounce__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! throttle-debounce */ "./node_modules/throttle-debounce/esm/index.js");
+/* harmony import */ var _util_reactNode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../_util/reactNode */ "./node_modules/antd/es/_util/reactNode.js");
+/* harmony import */ var _util_warning__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../_util/warning */ "./node_modules/antd/es/_util/warning.js");
+/* harmony import */ var _config_provider__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../config-provider */ "./node_modules/antd/es/config-provider/context.js");
+/* harmony import */ var _style_index__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./style/index */ "./node_modules/antd/es/spin/style/index.js");
+"use client";
+
+var __rest = undefined && undefined.__rest || function (s, e) {
+  var t = {};
+  for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+  if (s != null && typeof Object.getOwnPropertySymbols === "function") for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+    if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+  }
+  return t;
+};
+
+
+
+
+
+
+
+
+const SpinSizes = ['small', 'default', 'large'];
+// Render indicator
+let defaultIndicator = null;
+function renderIndicator(prefixCls, props) {
+  const {
+    indicator
+  } = props;
+  const dotClassName = `${prefixCls}-dot`;
+  // should not be render default indicator when indicator value is null
+  if (indicator === null) {
+    return null;
+  }
+  if ((0,_util_reactNode__WEBPACK_IMPORTED_MODULE_4__.isValidElement)(indicator)) {
+    return (0,_util_reactNode__WEBPACK_IMPORTED_MODULE_4__.cloneElement)(indicator, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(indicator.props.className, dotClassName)
+    });
+  }
+  if ((0,_util_reactNode__WEBPACK_IMPORTED_MODULE_4__.isValidElement)(defaultIndicator)) {
+    return (0,_util_reactNode__WEBPACK_IMPORTED_MODULE_4__.cloneElement)(defaultIndicator, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(defaultIndicator.props.className, dotClassName)
+    });
+  }
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("span", {
+    className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(dotClassName, `${prefixCls}-dot-spin`)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    className: `${prefixCls}-dot-item`,
+    key: 1
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    className: `${prefixCls}-dot-item`,
+    key: 2
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    className: `${prefixCls}-dot-item`,
+    key: 3
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("i", {
+    className: `${prefixCls}-dot-item`,
+    key: 4
+  }));
+}
+function shouldDelay(spinning, delay) {
+  return !!spinning && !!delay && !isNaN(Number(delay));
+}
+const Spin = props => {
+  const {
+      spinPrefixCls: prefixCls,
+      spinning: customSpinning = true,
+      delay = 0,
+      className,
+      rootClassName,
+      size = 'default',
+      tip,
+      wrapperClassName,
+      style,
+      children,
+      hashId,
+      fullscreen
+    } = props,
+    restProps = __rest(props, ["spinPrefixCls", "spinning", "delay", "className", "rootClassName", "size", "tip", "wrapperClassName", "style", "children", "hashId", "fullscreen"]);
+  const [spinning, setSpinning] = react__WEBPACK_IMPORTED_MODULE_0__.useState(() => customSpinning && !shouldDelay(customSpinning, delay));
+  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(() => {
+    if (customSpinning) {
+      const showSpinning = (0,throttle_debounce__WEBPACK_IMPORTED_MODULE_3__.debounce)(delay, () => {
+        setSpinning(true);
+      });
+      showSpinning();
+      return () => {
+        var _a;
+        (_a = showSpinning === null || showSpinning === void 0 ? void 0 : showSpinning.cancel) === null || _a === void 0 ? void 0 : _a.call(showSpinning);
+      };
+    }
+    setSpinning(false);
+  }, [delay, customSpinning]);
+  const isNestedPattern = react__WEBPACK_IMPORTED_MODULE_0__.useMemo(() => typeof children !== 'undefined' && !fullscreen, [children, fullscreen]);
+  if (true) {
+    const warning = (0,_util_warning__WEBPACK_IMPORTED_MODULE_5__.devUseWarning)('Spin');
+     true ? warning(!tip || isNestedPattern, 'usage', '`tip` only work in nest pattern.') : 0;
+  }
+  const {
+    direction,
+    spin
+  } = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_6__.ConfigContext);
+  const spinClassName = classnames__WEBPACK_IMPORTED_MODULE_1___default()(prefixCls, spin === null || spin === void 0 ? void 0 : spin.className, {
+    [`${prefixCls}-sm`]: size === 'small',
+    [`${prefixCls}-lg`]: size === 'large',
+    [`${prefixCls}-spinning`]: spinning,
+    [`${prefixCls}-show-text`]: !!tip,
+    [`${prefixCls}-fullscreen`]: fullscreen,
+    [`${prefixCls}-fullscreen-show`]: fullscreen && spinning,
+    [`${prefixCls}-rtl`]: direction === 'rtl'
+  }, className, rootClassName, hashId);
+  const containerClassName = classnames__WEBPACK_IMPORTED_MODULE_1___default()(`${prefixCls}-container`, {
+    [`${prefixCls}-blur`]: spinning
+  });
+  // fix https://fb.me/react-unknown-prop
+  const divProps = (0,rc_util_es_omit__WEBPACK_IMPORTED_MODULE_2__["default"])(restProps, ['indicator', 'prefixCls']);
+  const mergedStyle = Object.assign(Object.assign({}, spin === null || spin === void 0 ? void 0 : spin.style), style);
+  const spinElement = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", Object.assign({}, divProps, {
+    style: mergedStyle,
+    className: spinClassName,
+    "aria-live": "polite",
+    "aria-busy": spinning
+  }), renderIndicator(prefixCls, props), tip && (isNestedPattern || fullscreen) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: `${prefixCls}-text`
+  }, tip) : null);
+  if (isNestedPattern) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", Object.assign({}, divProps, {
+      className: classnames__WEBPACK_IMPORTED_MODULE_1___default()(`${prefixCls}-nested-loading`, wrapperClassName, hashId)
+    }), spinning && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      key: "loading"
+    }, spinElement), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+      className: containerClassName,
+      key: "container"
+    }, children));
+  }
+  return spinElement;
+};
+const SpinFC = props => {
+  const {
+    prefixCls: customizePrefixCls
+  } = props;
+  const {
+    getPrefixCls
+  } = react__WEBPACK_IMPORTED_MODULE_0__.useContext(_config_provider__WEBPACK_IMPORTED_MODULE_6__.ConfigContext);
+  const spinPrefixCls = getPrefixCls('spin', customizePrefixCls);
+  const [wrapSSR, hashId] = (0,_style_index__WEBPACK_IMPORTED_MODULE_7__["default"])(spinPrefixCls);
+  const spinClassProps = Object.assign(Object.assign({}, props), {
+    spinPrefixCls,
+    hashId
+  });
+  return wrapSSR( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(Spin, Object.assign({}, spinClassProps)));
+};
+SpinFC.setDefaultIndicator = indicator => {
+  defaultIndicator = indicator;
+};
+if (true) {
+  SpinFC.displayName = 'Spin';
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SpinFC);
+
+/***/ }),
+
+/***/ "./node_modules/antd/es/spin/style/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/antd/es/spin/style/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ant_design_cssinjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @ant-design/cssinjs */ "./node_modules/@ant-design/cssinjs/es/index.js");
+/* harmony import */ var _style__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../style */ "./node_modules/antd/es/style/index.js");
+/* harmony import */ var _theme_internal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../theme/internal */ "./node_modules/antd/es/theme/util/genComponentStyleHook.js");
+/* harmony import */ var _theme_internal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../theme/internal */ "./node_modules/antd/es/theme/util/statistic.js");
+
+
+
+const antSpinMove = new _ant_design_cssinjs__WEBPACK_IMPORTED_MODULE_0__.Keyframes('antSpinMove', {
+  to: {
+    opacity: 1
+  }
+});
+const antRotate = new _ant_design_cssinjs__WEBPACK_IMPORTED_MODULE_0__.Keyframes('antRotate', {
+  to: {
+    transform: 'rotate(405deg)'
+  }
+});
+const dotPadding = token => (token.dotSize - token.fontSize) / 2 + 2;
+const genSpinStyle = token => ({
+  [`${token.componentCls}`]: Object.assign(Object.assign({}, (0,_style__WEBPACK_IMPORTED_MODULE_1__.resetComponent)(token)), {
+    position: 'absolute',
+    display: 'none',
+    color: token.colorPrimary,
+    fontSize: 0,
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    opacity: 0,
+    transition: `transform ${token.motionDurationSlow} ${token.motionEaseInOutCirc}`,
+    '&-spinning': {
+      position: 'static',
+      display: 'inline-block',
+      opacity: 1
+    },
+    [`${token.componentCls}-text`]: {
+      fontSize: token.fontSize,
+      paddingTop: dotPadding(token)
+    },
+    '&-fullscreen': {
+      position: 'fixed',
+      width: '100vw',
+      height: '100vh',
+      backgroundColor: token.colorBgMask,
+      zIndex: token.zIndexPopupBase,
+      inset: 0,
+      display: 'flex',
+      alignItems: 'center',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      pointerEvents: 'none',
+      opacity: 0,
+      visibility: 'hidden',
+      transition: `all ${token.motionDurationMid}`,
+      '&-show': {
+        opacity: 1,
+        visibility: 'visible'
+      },
+      [`${token.componentCls}-dot ${token.componentCls}-dot-item`]: {
+        backgroundColor: token.colorWhite
+      },
+      [`${token.componentCls}-text`]: {
+        color: token.colorTextLightSolid
+      }
+    },
+    '&-nested-loading': {
+      position: 'relative',
+      [`> div > ${token.componentCls}`]: {
+        position: 'absolute',
+        top: 0,
+        insetInlineStart: 0,
+        zIndex: 4,
+        display: 'block',
+        width: '100%',
+        height: '100%',
+        maxHeight: token.contentHeight,
+        [`${token.componentCls}-dot`]: {
+          position: 'absolute',
+          top: '50%',
+          insetInlineStart: '50%',
+          margin: -token.dotSize / 2
+        },
+        [`${token.componentCls}-text`]: {
+          position: 'absolute',
+          top: '50%',
+          width: '100%',
+          textShadow: `0 1px 2px ${token.colorBgContainer}` // FIXME: shadow
+        },
+
+        [`&${token.componentCls}-show-text ${token.componentCls}-dot`]: {
+          marginTop: -(token.dotSize / 2) - 10
+        },
+        '&-sm': {
+          [`${token.componentCls}-dot`]: {
+            margin: -token.dotSizeSM / 2
+          },
+          [`${token.componentCls}-text`]: {
+            paddingTop: (token.dotSizeSM - token.fontSize) / 2 + 2
+          },
+          [`&${token.componentCls}-show-text ${token.componentCls}-dot`]: {
+            marginTop: -(token.dotSizeSM / 2) - 10
+          }
+        },
+        '&-lg': {
+          [`${token.componentCls}-dot`]: {
+            margin: -(token.dotSizeLG / 2)
+          },
+          [`${token.componentCls}-text`]: {
+            paddingTop: (token.dotSizeLG - token.fontSize) / 2 + 2
+          },
+          [`&${token.componentCls}-show-text ${token.componentCls}-dot`]: {
+            marginTop: -(token.dotSizeLG / 2) - 10
+          }
+        }
+      },
+      [`${token.componentCls}-container`]: {
+        position: 'relative',
+        transition: `opacity ${token.motionDurationSlow}`,
+        '&::after': {
+          position: 'absolute',
+          top: 0,
+          insetInlineEnd: 0,
+          bottom: 0,
+          insetInlineStart: 0,
+          zIndex: 10,
+          width: '100%',
+          height: '100%',
+          background: token.colorBgContainer,
+          opacity: 0,
+          transition: `all ${token.motionDurationSlow}`,
+          content: '""',
+          pointerEvents: 'none'
+        }
+      },
+      [`${token.componentCls}-blur`]: {
+        clear: 'both',
+        opacity: 0.5,
+        userSelect: 'none',
+        pointerEvents: 'none',
+        [`&::after`]: {
+          opacity: 0.4,
+          pointerEvents: 'auto'
+        }
+      }
+    },
+    // tip
+    // ------------------------------
+    [`&-tip`]: {
+      color: token.spinDotDefault
+    },
+    // dots
+    // ------------------------------
+    [`${token.componentCls}-dot`]: {
+      position: 'relative',
+      display: 'inline-block',
+      fontSize: token.dotSize,
+      width: '1em',
+      height: '1em',
+      '&-item': {
+        position: 'absolute',
+        display: 'block',
+        width: (token.dotSize - token.marginXXS / 2) / 2,
+        height: (token.dotSize - token.marginXXS / 2) / 2,
+        backgroundColor: token.colorPrimary,
+        borderRadius: '100%',
+        transform: 'scale(0.75)',
+        transformOrigin: '50% 50%',
+        opacity: 0.3,
+        animationName: antSpinMove,
+        animationDuration: '1s',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'linear',
+        animationDirection: 'alternate',
+        '&:nth-child(1)': {
+          top: 0,
+          insetInlineStart: 0
+        },
+        '&:nth-child(2)': {
+          top: 0,
+          insetInlineEnd: 0,
+          animationDelay: '0.4s'
+        },
+        '&:nth-child(3)': {
+          insetInlineEnd: 0,
+          bottom: 0,
+          animationDelay: '0.8s'
+        },
+        '&:nth-child(4)': {
+          bottom: 0,
+          insetInlineStart: 0,
+          animationDelay: '1.2s'
+        }
+      },
+      '&-spin': {
+        transform: 'rotate(45deg)',
+        animationName: antRotate,
+        animationDuration: '1.2s',
+        animationIterationCount: 'infinite',
+        animationTimingFunction: 'linear'
+      }
+    },
+    // Sizes
+    // ------------------------------
+    // small
+    [`&-sm ${token.componentCls}-dot`]: {
+      fontSize: token.dotSizeSM,
+      i: {
+        width: (token.dotSizeSM - token.marginXXS / 2) / 2,
+        height: (token.dotSizeSM - token.marginXXS / 2) / 2
+      }
+    },
+    // large
+    [`&-lg ${token.componentCls}-dot`]: {
+      fontSize: token.dotSizeLG,
+      i: {
+        width: (token.dotSizeLG - token.marginXXS) / 2,
+        height: (token.dotSizeLG - token.marginXXS) / 2
+      }
+    },
+    [`&${token.componentCls}-show-text ${token.componentCls}-text`]: {
+      display: 'block'
+    }
+  })
+});
+// ============================== Export ==============================
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_theme_internal__WEBPACK_IMPORTED_MODULE_2__["default"])('Spin', token => {
+  const spinToken = (0,_theme_internal__WEBPACK_IMPORTED_MODULE_3__.merge)(token, {
+    spinDotDefault: token.colorTextDescription
+  });
+  return [genSpinStyle(spinToken)];
+}, token => ({
+  contentHeight: 400,
+  dotSize: token.controlHeightLG / 2,
+  dotSizeSM: token.controlHeightLG * 0.35,
+  dotSizeLG: token.controlHeight
+})));
+
+/***/ }),
+
 /***/ "./node_modules/antd/es/style/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/antd/es/style/index.js ***!
@@ -9881,10 +10714,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_google_charts__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-google-charts */ "./node_modules/react-google-charts/dist/index.js");
+/* harmony import */ var react_google_charts__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-google-charts */ "./node_modules/react-google-charts/dist/index.js");
 /* harmony import */ var _components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Checkboxes */ "./src/components/Checkboxes.jsx");
+/* harmony import */ var _ant_design_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ant-design/icons */ "./node_modules/@ant-design/icons/es/icons/LoadingOutlined.js");
+/* harmony import */ var antd__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! antd */ "./node_modules/antd/es/spin/index.js");
 /* harmony import */ var _store_reducer_chartSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./store/reducer/chartSlice */ "./src/store/reducer/chartSlice.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
 
 
 
@@ -9921,12 +10758,25 @@ const App = ({
   }, title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, attributes?.subtitle), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_components_Checkboxes__WEBPACK_IMPORTED_MODULE_1__["default"], {
     location: attributes?.location,
     attributes: attributes
-  }), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_4__.Chart, {
+  }), data.length <= 0 ? (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "loader-custom-style"
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(antd__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    indicator: (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_ant_design_icons__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      style: {
+        fontSize: 24
+      },
+      spin: true
+    })
+  }), " ") : (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_google_charts__WEBPACK_IMPORTED_MODULE_6__.Chart, {
     chartType: "LineChart",
-    width: "100%",
-    height: "400px",
     data: data,
     options: {
+      width: '100%',
+      height: '400px',
+      chartArea: {
+        left: 40,
+        width: '100%'
+      },
       curveType: "function",
       legend: {
         position: "none"
@@ -9938,13 +10788,16 @@ const App = ({
         logScale: true,
         scaleType: 'log',
         gridlines: {
-          minSpacing: attributes?.type == 'gasoline' ? 5 : 17
+          // minSpacing: attributes?.type == 'gasoline' ? 5 : 17,
+          // interval: 2
         },
         minorGridlines: {
           color: 'transparent'
-        }
+        },
+        maxValue: 2,
+        format: '0'
       },
-      pointSize: 1,
+      // pointSize: 1,
       series: {
         0: {}
         // 1: { color: '#e7711b' },
@@ -9952,11 +10805,16 @@ const App = ({
         // 3: { color: '#6f9654' },
         // 4: { color: '#1c91c0' },
         // 5: { color: '#43459d' },
+      },
+
+      animation: {
+        startup: true,
+        duration: 200,
+        easing: 'in'
       }
     }
   }));
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (React.memo(App));
 
 /***/ }),
@@ -17477,6 +18335,39 @@ __webpack_require__.r(__webpack_exports__);
   }
   return false;
 });
+
+/***/ }),
+
+/***/ "./node_modules/rc-util/es/Dom/shadow.js":
+/*!***********************************************!*\
+  !*** ./node_modules/rc-util/es/Dom/shadow.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   getShadowRoot: () => (/* binding */ getShadowRoot),
+/* harmony export */   inShadow: () => (/* binding */ inShadow)
+/* harmony export */ });
+function getRoot(ele) {
+  var _ele$getRootNode;
+  return ele === null || ele === void 0 || (_ele$getRootNode = ele.getRootNode) === null || _ele$getRootNode === void 0 ? void 0 : _ele$getRootNode.call(ele);
+}
+
+/**
+ * Check if is in shadowRoot
+ */
+function inShadow(ele) {
+  return getRoot(ele) instanceof ShadowRoot;
+}
+
+/**
+ * Return shadowRoot if possible
+ */
+function getShadowRoot(ele) {
+  return inShadow(ele) ? getRoot(ele) : null;
+}
 
 /***/ }),
 
@@ -29140,6 +30031,194 @@ function filter (array, pattern) {
 }
 
 
+/***/ }),
+
+/***/ "./node_modules/throttle-debounce/esm/index.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/throttle-debounce/esm/index.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   debounce: () => (/* binding */ debounce),
+/* harmony export */   throttle: () => (/* binding */ throttle)
+/* harmony export */ });
+/* eslint-disable no-undefined,no-param-reassign,no-shadow */
+
+/**
+ * Throttle execution of a function. Especially useful for rate limiting
+ * execution of handlers on events like resize and scroll.
+ *
+ * @param {number} delay -                  A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher)
+ *                                            are most useful.
+ * @param {Function} callback -               A function to be executed after delay milliseconds. The `this` context and all arguments are passed through,
+ *                                            as-is, to `callback` when the throttled-function is executed.
+ * @param {object} [options] -              An object to configure options.
+ * @param {boolean} [options.noTrailing] -   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds
+ *                                            while the throttled-function is being called. If noTrailing is false or unspecified, callback will be executed
+ *                                            one final time after the last throttled-function call. (After the throttled-function has not been called for
+ *                                            `delay` milliseconds, the internal counter is reset).
+ * @param {boolean} [options.noLeading] -   Optional, defaults to false. If noLeading is false, the first throttled-function call will execute callback
+ *                                            immediately. If noLeading is true, the first the callback execution will be skipped. It should be noted that
+ *                                            callback will never executed if both noLeading = true and noTrailing = true.
+ * @param {boolean} [options.debounceMode] - If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is
+ *                                            false (at end), schedule `callback` to execute after `delay` ms.
+ *
+ * @returns {Function} A new, throttled, function.
+ */
+function throttle (delay, callback, options) {
+  var _ref = options || {},
+      _ref$noTrailing = _ref.noTrailing,
+      noTrailing = _ref$noTrailing === void 0 ? false : _ref$noTrailing,
+      _ref$noLeading = _ref.noLeading,
+      noLeading = _ref$noLeading === void 0 ? false : _ref$noLeading,
+      _ref$debounceMode = _ref.debounceMode,
+      debounceMode = _ref$debounceMode === void 0 ? undefined : _ref$debounceMode;
+  /*
+   * After wrapper has stopped being called, this timeout ensures that
+   * `callback` is executed at the proper times in `throttle` and `end`
+   * debounce modes.
+   */
+
+
+  var timeoutID;
+  var cancelled = false; // Keep track of the last time `callback` was executed.
+
+  var lastExec = 0; // Function to clear existing timeout
+
+  function clearExistingTimeout() {
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+    }
+  } // Function to cancel next exec
+
+
+  function cancel(options) {
+    var _ref2 = options || {},
+        _ref2$upcomingOnly = _ref2.upcomingOnly,
+        upcomingOnly = _ref2$upcomingOnly === void 0 ? false : _ref2$upcomingOnly;
+
+    clearExistingTimeout();
+    cancelled = !upcomingOnly;
+  }
+  /*
+   * The `wrapper` function encapsulates all of the throttling / debouncing
+   * functionality and when executed will limit the rate at which `callback`
+   * is executed.
+   */
+
+
+  function wrapper() {
+    for (var _len = arguments.length, arguments_ = new Array(_len), _key = 0; _key < _len; _key++) {
+      arguments_[_key] = arguments[_key];
+    }
+
+    var self = this;
+    var elapsed = Date.now() - lastExec;
+
+    if (cancelled) {
+      return;
+    } // Execute `callback` and update the `lastExec` timestamp.
+
+
+    function exec() {
+      lastExec = Date.now();
+      callback.apply(self, arguments_);
+    }
+    /*
+     * If `debounceMode` is true (at begin) this is used to clear the flag
+     * to allow future `callback` executions.
+     */
+
+
+    function clear() {
+      timeoutID = undefined;
+    }
+
+    if (!noLeading && debounceMode && !timeoutID) {
+      /*
+       * Since `wrapper` is being called for the first time and
+       * `debounceMode` is true (at begin), execute `callback`
+       * and noLeading != true.
+       */
+      exec();
+    }
+
+    clearExistingTimeout();
+
+    if (debounceMode === undefined && elapsed > delay) {
+      if (noLeading) {
+        /*
+         * In throttle mode with noLeading, if `delay` time has
+         * been exceeded, update `lastExec` and schedule `callback`
+         * to execute after `delay` ms.
+         */
+        lastExec = Date.now();
+
+        if (!noTrailing) {
+          timeoutID = setTimeout(debounceMode ? clear : exec, delay);
+        }
+      } else {
+        /*
+         * In throttle mode without noLeading, if `delay` time has been exceeded, execute
+         * `callback`.
+         */
+        exec();
+      }
+    } else if (noTrailing !== true) {
+      /*
+       * In trailing throttle mode, since `delay` time has not been
+       * exceeded, schedule `callback` to execute `delay` ms after most
+       * recent execution.
+       *
+       * If `debounceMode` is true (at begin), schedule `clear` to execute
+       * after `delay` ms.
+       *
+       * If `debounceMode` is false (at end), schedule `callback` to
+       * execute after `delay` ms.
+       */
+      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+    }
+  }
+
+  wrapper.cancel = cancel; // Return the wrapper function.
+
+  return wrapper;
+}
+
+/* eslint-disable no-undefined */
+/**
+ * Debounce execution of a function. Debouncing, unlike throttling,
+ * guarantees that a function is only executed a single time, either at the
+ * very beginning of a series of calls, or at the very end.
+ *
+ * @param {number} delay -               A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param {Function} callback -          A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                        to `callback` when the debounced-function is executed.
+ * @param {object} [options] -           An object to configure options.
+ * @param {boolean} [options.atBegin] -  Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+ *                                        after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+ *                                        (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+ *
+ * @returns {Function} A new, debounced function.
+ */
+
+function debounce (delay, callback, options) {
+  var _ref = options || {},
+      _ref$atBegin = _ref.atBegin,
+      atBegin = _ref$atBegin === void 0 ? false : _ref$atBegin;
+
+  return throttle(delay, callback, {
+    debounceMode: atBegin !== false
+  });
+}
+
+
+//# sourceMappingURL=index.js.map
+
+
 /***/ })
 
 /******/ 	});
@@ -29276,7 +30355,7 @@ __webpack_require__.r(__webpack_exports__);
 // );
 
 document.querySelectorAll('.usa-gas-prices-chart').forEach(domContainer => {
-  ReactDOM.render((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.render)((0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(react_redux__WEBPACK_IMPORTED_MODULE_3__.Provider, {
     store: _store__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_App__WEBPACK_IMPORTED_MODULE_1__["default"], {
     attributes: JSON.parse(domContainer.attributes['data-gas-prices-attr'].value)

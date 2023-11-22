@@ -58,6 +58,12 @@
   // width: 100%;
 }
 
+.usa-gas-prices-chart{
+  & > span{
+    color: #bfbfbf;
+  }
+}
+
 // ANTD checkbox
 :where(.css-dev-only-do-not-override-nllxry).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-inner, :where(.css-dev-only-do-not-override-nllxry).ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner{
   border-color: #A2CC3A;
@@ -69,4 +75,51 @@
 
 :where(.css-dev-only-do-not-override-nllxry).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner{
   background-color: #aed057;
+}
+
+// Chart Loader
+.loader-custom-style {
+  margin: 20px 0;
+  margin-bottom: 20px;
+  padding: 100px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+}
+
+// Gas Prices Averages
+.todays-gas-price-average{
+  -webkit-box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.2);
+  -moz-box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 6px 1px rgba(0,0,0,0.2);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 1fr 100px;
+  
+  div{
+    padding: 10px;
+
+    p{
+      margin: 0px;
+      &:first-of-type{
+        color: #abcc54;
+      }
+      &:last-of-type{
+        color: #bfbfbf;
+      }
+    }
+    &:first-child{
+      padding-right: 60px;
+    }
+    &:last-child{
+      align-content: center;
+      display: grid;
+      text-align: center;
+      background: #f2f8e3;
+      color: #abcc54;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+  }
 }
