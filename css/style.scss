@@ -1,13 +1,18 @@
 .usa-gas-prices-wrapper{
   #usa-gasoline-prices,
   #usa-diesel-prices{
-    display: flex;
-
+    p{
+      font-weight: bold;
+      margin: 0px;
+    }
+    span{
+      color: #bfbfbf;
+    }
     table{
       flex: 1;
       border-spacing: 0px;
       font-size: 16px;
-      
+
       thead{
         th{
           border-bottom: 2px solid #a2cc3a;

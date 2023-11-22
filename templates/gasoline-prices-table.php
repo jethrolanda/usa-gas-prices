@@ -1,6 +1,7 @@
 <div class="usa-gas-prices-wrapper">
   <div id="usa-gasoline-prices">
-		<b>U.S. Regular Gasoline Prices*(dollars per gallon)</b>
+		<p>U.S. Regular Gasoline Prices</p>
+		<span>(dollars per gallon)</span>
 		<table>
 			<thead>
 				<tr>

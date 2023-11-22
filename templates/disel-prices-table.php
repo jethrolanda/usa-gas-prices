@@ -1,6 +1,7 @@
 <div class="usa-gas-prices-wrapper">
   <div id="usa-diesel-prices">
-		<b>U.S. On-Highway Diesel Fuel Prices*(dollars per gallon)</b>
+		<p>U.S. On-Highway Diesel Fuel Prices</p>
+		<span>(dollars per gallon)</span>
 		<table>
 			<thead>
 				<tr>

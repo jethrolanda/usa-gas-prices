@@ -266,7 +266,6 @@ class UGP_Shortcodes
         } else {
             $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&length=1');
         }
-        error_log(print_r($data,true));
 
         ob_start();
         
