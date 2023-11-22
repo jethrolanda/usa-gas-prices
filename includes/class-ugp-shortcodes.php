@@ -254,20 +254,29 @@ class UGP_Shortcodes
      * @access public
      */
     public function display_current_average_price_shortcode($atts) {
+
         $atts = shortcode_atts( array(
             'type' => 'gas'
         ), $atts );
         
         extract($atts);
+
+        if($type === 'gas'){
+            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&length=1');
+        } else {
+            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&length=1');
+        }
+        error_log(print_r($data,true));
+
         ob_start();
         
         ?><div class="todays-gas-price-average">
             <div>
-                <h5><?php echo $type == 'gas' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></h5>
+                <b><?php echo $type == 'gas' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></b>
                 <p><?php echo $type == 'gas' ? 'NATIONAL AVERAGE GASOLINE PRICE' : 'NATIONAL AVERAGE ROAD DIESEL PRICE'; ?></p>
                 <p>AS OF <?php echo date('m/d/y'); ?></p>
             </div>
-            <div><?php echo $type == 'gas' ? '$3.23' : '$4.09';?></div>
+            <div><?php echo !empty($data) ? '$'. number_format((float)$data['U.S.'][0]->value, 2, '.', '') : '';?></div>
         </div><?php
 
         $content = ob_get_clean();
