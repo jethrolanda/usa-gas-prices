@@ -40,24 +40,28 @@ class UGP_Scripts
 
         global $post;
 
-        $chart_shortcode_exist = false;
-        $gas_prices_shortcode_exist = false;
+        $usa_gas_prices_chart_exist = false;
+        $usa_gas_prices_table_exist = false;
+        $display_current_average_price_exist = false;
 
         if($post && $post->ID){
             $shortcodes = get_post_meta( $post->ID, "ct_builder_shortcodes", true );
             if(strpos($shortcodes, 'usa_gas_prices_chart') !== false) {
-                $chart_shortcode_exist = true;
+                $usa_gas_prices_chart_exist = true;
             }
             if(strpos($shortcodes, 'usa_gas_prices_table') !== false) {
-                $gas_prices_shortcode_exist = true;
+                $usa_gas_prices_table_exist = true;
+            }
+            if(strpos($shortcodes, 'display_current_average_price') !== false) {
+                $display_current_average_price_exist = true;
             }
         }
 
-        if($gas_prices_shortcode_exist){
+        if($usa_gas_prices_chart_exist||$usa_gas_prices_table_exist||$display_current_average_price_exist){
             wp_enqueue_style('ugp-style', UGP_CSS_ROOT_URL . 'style.min.css');
         }
         
-        if($chart_shortcode_exist || ($post && has_shortcode($post->post_content, 'usa_gas_prices_chart'))) {
+        if($usa_gas_prices_chart_exist || ($post && has_shortcode($post->post_content, 'usa_gas_prices_chart'))) {
 
             $this->plugin_scripts();
             
