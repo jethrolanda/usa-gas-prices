@@ -36,48 +36,47 @@ class UGP_Shortcodes
     }
 
     /**
-     * USA gasoline prices table
+     * USA gas prices table
      *
      * @since 1.0
      * @access public
      */
-    public function usa_gasoline_prices_table_shortcode() { 
+    public function usa_gas_prices_table_shortcode($atts) { 
 
-        // Fetch 3 weeks data
-        $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_R5XCA_DPG&length=30');
+        $atts = shortcode_atts( array(
+            'type' => 'gasoline'
+        ), $atts );
+
+        extract($atts);
 
         // Fetch year ago data
         $monday = date('Y-m-d',strtotime("last Monday"));
         $last_year = date('Y-m-d',strtotime('- 1 year', strtotime("last Monday")));
 
-        $year_ago = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_R5XCA_DPG&length=10&start='.$last_year.'&end='.$monday);
-
         ob_start();
-        require_once(UGP_TEMPLATES_ROOT_DIR . 'gasoline-prices-table.php');
-        $content = ob_get_clean();
-        return $content;
-    }
 
-    /**
-     * USA diesel prices table
-     *
-     * @since 1.0
-     * @access public
-     */
-    public function usa_diesel_prices_table_shortcode() { 
+        if($type === 'gasoline') {
 
-        // Fetch 3 weeks data
-        $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R10_DPG&facets[series][]=EMD_EPD2D_PTE_R1X_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R1Y_DPG&facets[series][]=EMD_EPD2D_PTE_R1Z_DPG&facets[series][]=EMD_EPD2D_PTE_R20_DPG&facets[series][]=EMD_EPD2D_PTE_R30_DPG&facets[series][]=EMD_EPD2D_PTE_R40_DPG&facets[series][]=EMD_EPD2D_PTE_R50_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R5XCA_DPG&facets[series][]=EMD_EPD2DXL0_PTE_SCA_DPG&length=33');
+            // Fetch 3 weeks data
+            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_R5XCA_DPG&length=30');
+
+            $year_ago = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMM_EPMR_PTE_NUS_DPG&facets[series][]=EMM_EPMR_PTE_R10_DPG&facets[series][]=EMM_EPMR_PTE_R1X_DPG&facets[series][]=EMM_EPMR_PTE_R1Y_DPG&facets[series][]=EMM_EPMR_PTE_R1Z_DPG&facets[series][]=EMM_EPMR_PTE_R20_DPG&facets[series][]=EMM_EPMR_PTE_R30_DPG&facets[series][]=EMM_EPMR_PTE_R40_DPG&facets[series][]=EMM_EPMR_PTE_R50_DPG&facets[series][]=EMM_EPMR_PTE_R5XCA_DPG&length=10&start='.$last_year.'&end='.$monday);
+
+            require_once(UGP_TEMPLATES_ROOT_DIR . 'gasoline-prices-table.php');
+
+        } else{
+
+            // Fetch 3 weeks data
+            $data = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=desc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R10_DPG&facets[series][]=EMD_EPD2D_PTE_R1X_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R1Y_DPG&facets[series][]=EMD_EPD2D_PTE_R1Z_DPG&facets[series][]=EMD_EPD2D_PTE_R20_DPG&facets[series][]=EMD_EPD2D_PTE_R30_DPG&facets[series][]=EMD_EPD2D_PTE_R40_DPG&facets[series][]=EMD_EPD2D_PTE_R50_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R5XCA_DPG&facets[series][]=EMD_EPD2DXL0_PTE_SCA_DPG&length=33');
+
+            $year_ago = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R10_DPG&facets[series][]=EMD_EPD2D_PTE_R1X_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R1Y_DPG&facets[series][]=EMD_EPD2D_PTE_R1Z_DPG&facets[series][]=EMD_EPD2D_PTE_R20_DPG&facets[series][]=EMD_EPD2D_PTE_R30_DPG&facets[series][]=EMD_EPD2D_PTE_R40_DPG&facets[series][]=EMD_EPD2D_PTE_R50_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R5XCA_DPG&facets[series][]=EMD_EPD2DXL0_PTE_SCA_DPG&length=11&start='.$last_year.'&end='.$monday);
+
+            require_once(UGP_TEMPLATES_ROOT_DIR . 'disel-prices-table.php');
+            
+        }
         
-        // Fetch year ago data
-        $monday = date('Y-m-d',strtotime("last Monday"));
-        $last_year = date('Y-m-d',strtotime('- 1 year', strtotime("last Monday")));
-
-        $year_ago = $this->api_request('https://api.eia.gov/v2/petroleum/pri/gnd/data?data[]=value&frequency=weekly&sort[0][column]=period&sort[0][direction]=asc&api_key=jtxw1tp7sOIBsYhTQLDIEmGgumigkvxqnlQYBDvh&facets[series][]=EMD_EPD2DXL0_PTE_NUS_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R10_DPG&facets[series][]=EMD_EPD2D_PTE_R1X_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R1Y_DPG&facets[series][]=EMD_EPD2D_PTE_R1Z_DPG&facets[series][]=EMD_EPD2D_PTE_R20_DPG&facets[series][]=EMD_EPD2D_PTE_R30_DPG&facets[series][]=EMD_EPD2D_PTE_R40_DPG&facets[series][]=EMD_EPD2D_PTE_R50_DPG&facets[series][]=EMD_EPD2DXL0_PTE_R5XCA_DPG&facets[series][]=EMD_EPD2DXL0_PTE_SCA_DPG&length=11&start='.$last_year.'&end='.$monday);
-
-        ob_start();
-        require_once(UGP_TEMPLATES_ROOT_DIR . 'disel-prices-table.php');
         $content = ob_get_clean();
+
         return $content;
 
     }
@@ -256,7 +255,7 @@ class UGP_Shortcodes
     public function display_current_average_price_shortcode($atts) {
 
         $atts = shortcode_atts( array(
-            'type' => 'gas'
+            'type' => 'gasoline'
         ), $atts );
         
         extract($atts);
@@ -271,8 +270,8 @@ class UGP_Shortcodes
         
         ?><div class="todays-gas-price-average">
             <div>
-                <b><?php echo $type == 'gas' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></b>
-                <p><?php echo $type == 'gas' ? 'NATIONAL AVERAGE GASOLINE PRICE' : 'NATIONAL AVERAGE ROAD DIESEL PRICE'; ?></p>
+                <b><?php echo $type == 'gasoline' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></b>
+                <p><?php echo $type == 'gasoline' ? 'NATIONAL AVERAGE GASOLINE PRICE' : 'NATIONAL AVERAGE ROAD DIESEL PRICE'; ?></p>
                 <p>AS OF <?php echo date('m/d/y'); ?></p>
             </div>
             <div><?php echo !empty($data) ? '$'. number_format((float)$data['U.S.'][0]->value, 2, '.', '') : '';?></div>
@@ -290,12 +289,9 @@ class UGP_Shortcodes
      */
     public function run() { 
 
-        // USA gasoline prices table shortcode
-        add_shortcode('usa_gasoline_prices_table', array($this, 'usa_gasoline_prices_table_shortcode'));
-
-        // USA diesel prices table shortcode
-        add_shortcode('usa_diesel_prices_table', array($this, 'usa_diesel_prices_table_shortcode'));
-
+        // USA gas prices table shortcode
+        add_shortcode('usa_gas_prices_table', array($this, 'usa_gas_prices_table_shortcode'));
+        
         // USA gas prices chart shortcode
         add_shortcode('usa_gas_prices_chart', array($this, 'usa_gas_prices_chart_shortcode'));
 
