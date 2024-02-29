@@ -3,8 +3,8 @@
  * Plugin Name: USA Gas Prices
  * Description: USA Gas prices history and graphs.
  * Version: 1.0
- * Author: Jethro Landa
- * Author URI: https://jethrolanda.com/
+ * Author: Xammis
+ * Author URI: https://xammis.com/
  * Text Domain: usa-gas-prices
  * Domain Path: /languages/
  * Requires at least: 5.7

@@ -1,3 +1,6 @@
+@import 'mixin', 'colors';
+
+// Gas prices table / 3 Weeks prices
 .usa-gas-prices-wrapper{
   #usa-gasoline-prices,
   #usa-diesel-prices{
@@ -6,7 +9,7 @@
       margin: 0px;
     }
     span{
-      color: #bfbfbf;
+      color: $gray;
     }
     table{
       flex: 1;
@@ -15,7 +18,7 @@
 
       thead{
         th{
-          border-bottom: 2px solid #a2cc3a;
+          border-bottom: 2px solid $green;
         }
       }
       th, td {
@@ -23,7 +26,7 @@
       }
       tr{
         td{
-          border-bottom: 1px solid #a2cc3a;
+          border-bottom: 1px solid $green;
   
           &.level-1-indent{
             padding-left: 40px;
@@ -62,21 +65,70 @@
 
 .usa-gas-prices-chart{
   & > span{
-    color: #bfbfbf;
+    color: $gray;
   }
 }
 
 // ANTD checkbox
-:where(.css-dev-only-do-not-override-nllxry).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-inner, :where(.css-dev-only-do-not-override-nllxry).ant-checkbox:not(.ant-checkbox-disabled):hover .ant-checkbox-inner{
-  border-color: #A2CC3A;
-}
-.ant-checkbox-checked .ant-checkbox-inner {
-  background-color: #A2CC3A;
-  border-color: #A2CC3A;
+input[value='U.S.'] + span.ant-checkbox-inner{
+  background-color: $us !important;
+  border-color: $us !important;
 }
 
-:where(.css-dev-only-do-not-override-nllxry).ant-checkbox-wrapper:not(.ant-checkbox-wrapper-disabled):hover .ant-checkbox-checked:not(.ant-checkbox-disabled) .ant-checkbox-inner{
-  background-color: #aed057;
+input[value='East Coast'] + span.ant-checkbox-inner{
+  background-color: $east_cost !important;
+  border-color: $east_cost !important;
+}
+
+input[value='New England'] + span.ant-checkbox-inner{
+  background-color: $new_england !important;
+  border-color: $new_england !important;
+}
+
+input[value='Central Atlantic'] + span.ant-checkbox-inner{
+  background-color: $central_atlantic !important;
+  border-color: $central_atlantic !important;
+}
+
+input[value='Lower Atlantic'] + span.ant-checkbox-inner{
+  background-color: $green !important;
+  border-color: $green !important;
+}
+
+input[value='Midwest'] + span.ant-checkbox-inner{
+  background-color: $midwest !important;
+  border-color: $midwest !important;
+}
+
+input[value='Gulf Coast'] + span.ant-checkbox-inner{
+  background-color: $gulf_coast !important;
+  border-color: $gulf_coast !important;
+}
+
+input[value='Rocky Mountain'] + span.ant-checkbox-inner{
+  background-color: $rocky_mountain !important;
+  border-color: $rocky_mountain !important;
+}
+
+input[value='West Coast'] + span.ant-checkbox-inner{
+  background-color: $west_coast !important;
+  border-color: $west_coast !important;
+}
+
+input[value='California'] + span.ant-checkbox-inner{
+  background-color: $california !important;
+  border-color: $california !important;
+}
+
+// ANTD radio
+:where(.css-dev-only-do-not-override-nllxry).ant-radio-wrapper .ant-radio-checked .ant-radio-inner,
+:where(.css-nllxry).ant-radio-wrapper .ant-radio-checked .ant-radio-inner{
+  border-color: $green !important;
+  background-color: $green !important;
+}
+
+.ant-radio-wrapper:hover :where(.css-nllxry).ant-radio-wrapper, :where(.css-nllxry).ant-radio-wrapper:hover .ant-radio-inner{
+  border-color: $green !important;
 }
 
 // Chart Loader
@@ -91,12 +143,7 @@
 
 // Gas Prices Averages
 .todays-gas-price-average{
-  border: 1px solid #dee4ec;
-  border-radius: 5px;
-  box-shadow: 1px 1px 16px 0 rgba(0,0,0,.08);
-  padding: 10px;
-  display: grid;
-  grid-template-columns: 1fr 120px;
+  @include todays-price-wrapper;
   
   div{
     padding: 10px;
@@ -105,23 +152,71 @@
       margin: 0px;
       font-size: 16px;
       &:first-of-type{
-        color: #abcc54;
+        color: $green;
       }
       &:last-of-type{
-        color: #bfbfbf;
+        color: $gray;
       }
     }
     &:first-child{
       padding-right: 60px;
     }
     &:last-child{
-      align-content: center;
-      display: grid;
-      text-align: center;
-      background: #f2f8e3;
-      color: #abcc54;
-      border-radius: 5px;
-      font-size: 28px;
+      @include light-green-bg;
     }
+  }
+}
+
+// USA PADD visual gas prices
+#tooltip-wrapper{
+  display: none;
+  max-width: 200px;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  .padd-visual{
+    @include todays-price-wrapper;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 6px 12px;
+    p{
+      margin: 0px;
+    }
+    .region{
+      font-weight: 700;
+    }
+    .price{
+      @include light-green-bg;
+      padding: 10px;
+    }
+    .state{
+      color: $green;
+      font-size: 14px;
+    }
+    .date{
+      color: $gray;
+      font-size: 14px;
+    }
+    .padd1a, .padd1b, .padd1c{
+      font-weight: 700;
+      span{
+        color: $green;
+      }
+    }
+  }
+}
+
+// PADDS Filter
+.gas-type-filter{
+  display: flex;
+  justify-content: flex-end;
+  font-weight: 800;
+  font-size: 22px;
+  span{
+    font-size: 22px;
+    color: var(--paragraph-color);
+    font-family: "Roboto";
+    font-weight: 800;
   }
 }

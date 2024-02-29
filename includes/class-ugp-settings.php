@@ -21,6 +21,16 @@ class UGP_Settings
      */
     protected static $_instance = null;
 
+    private $colors = array(
+        'padd_1a' => "#328e42",
+        'padd_1b' => "#45b255",
+        'padd_1c' => "#7ccb29",
+        'padd_2' => "#5ca5bf",
+        'padd_3' => "#162f3f",
+        'padd_4' => "#8bc4d2",
+        'padd_5' => "#265997"
+    );
+    
     /**
      * Main Instance.
      * 
@@ -40,11 +50,11 @@ class UGP_Settings
      */
     public function custom_menu() {
         add_menu_page(
-            'Fuel Savings',
-            'Fuel Savings',
+            'Gas Prices',
+            'Gas Prices',
             'edit_posts',
-            'fuel_savings_settings',
-            array($this, 'fuel_savings_settings_page'),
+            'gas_prices_settings',
+            array($this, 'gas_prices_settings_page'),
             'dashicons-media-spreadsheet'
         );
     }
@@ -54,42 +64,44 @@ class UGP_Settings
      * 
      * @since 1.0
      */
-    public function fuel_savings_settings_page() {
+    public function gas_prices_settings_page() {
       ?>
         <div class="wrap">
-            <div id="fuel-savings-settings">
+            <div id="gas-prices-settings">
                 <h2>Loading...</h2>
             </div>
         </div><?php
     }
-    
+
     /**
-     * Fetch recaptcha settings.
+     * Fetch PADD colors
      * 
      * @since 1.0
      */
-    public function ugp_settings_get_recaptcha_data() {
+    public function ugp_settings_fetch_padd_colors() {
         
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
         }
-        
+
         /**
          * Verify nonce
          */
-        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'settings_nonce')) {
+        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'colors_nonce')) {
             wp_die();
-        }
-        
-        try {
+        }  
 
-            $site_key = get_option('ugp_site_key', '');
-            $secret_key = get_option('ugp_secret_key', '');
+        try{
             
+            $colors = get_option('ugp_padd_colors');
+            
+            if(empty($colors)){
+                $colors = $this->colors;
+            }
+
             wp_send_json(array(
                 'status' => 'success',
-                'site_key' => $site_key,
-                'secret_key' => $secret_key
+                'colors' => $colors
             ));
 
         } catch (Exception $e) {
@@ -104,11 +116,11 @@ class UGP_Settings
     }
 
     /**
-     * Save recaptcha settings.
+     * Save PADD colors.
      * 
      * @since 1.0
      */
-    public function ugp_settings_save_recaptcha_data() {
+    public function ugp_settings_save_padd_colors() {
         
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
@@ -117,22 +129,23 @@ class UGP_Settings
         /**
          * Verify nonce
          */
-        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'settings_nonce')) {
+        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'colors_nonce')) {
             wp_die();
         }  
 
         try{
 
-            $site_key = isset($_POST['site_key']) ? sanitize_text_field($_POST['site_key']) : '';
-            $secret_key = isset($_POST['secret_key']) ? sanitize_text_field($_POST['secret_key']) : '';
-
-            update_option('ugp_site_key', $site_key);
-            update_option('ugp_secret_key', $secret_key);
+            $colors = isset($_POST['data']) ? $_POST['data'] : array();
             
+            if(empty($colors)){
+                $colors = $this->colors;
+            }
+
+            update_option('ugp_padd_colors', $colors);
+
             wp_send_json(array(
                 'status' => 'success',
-                'site_key' => $site_key,
-                'secret_key' => $secret_key
+                'colors' => $colors
             ));
 
         } catch (Exception $e) {
@@ -147,53 +160,11 @@ class UGP_Settings
     }
 
     /**
-     * Fetch email settings.
+     * Delete cache
      * 
      * @since 1.0
      */
-    public function ugp_settings_get_email_data() {
-        
-        if (!defined('DOING_AJAX') || !DOING_AJAX) {
-            wp_die();
-        }
-        
-        /**
-         * Verify nonce
-         */
-        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'settings_nonce')) {
-            wp_die();
-        }
-        
-        try {
-
-            $subject = get_option('ugp_email_subject', '');
-            $cc = get_option('ugp_email_cc', '');
-            $body = get_option('ugp_email_body', '');
-            
-            wp_send_json(array(
-                'status' => 'success',
-                'subject' => $subject,
-                'cc' => $cc,
-                'body' => wp_unslash($body)
-            ));
-
-        } catch (Exception $e) {
-
-            wp_send_json(array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            ));
-
-        }
-        
-    }
-
-    /**
-     * Save email settings.
-     * 
-     * @since 1.0
-     */
-    public function ugp_settings_save_email_data() {
+    public function ugp_settings_delete_cache() {
         
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
@@ -202,109 +173,16 @@ class UGP_Settings
         /**
          * Verify nonce
          */
-        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'settings_nonce')) {
-            wp_die();
-        }  
-
-        try {
-            
-            $subject = isset($_POST['subject']) ? sanitize_text_field($_POST['subject']) : '';
-            $cc = isset($_POST['emails']) ? $_POST['emails'] : '';
-            
-            $allowed_tags = array( 
-                'a' => array(
-                    'href' => array(),
-                    'title' => array()
-                ),
-                'p' => array(
-                    'class' => array()
-                ), 
-                'br' => array(), 
-                'ul' => array(), 
-                'ol' => array(), 
-                'li' => array(), 
-                'i' => array(), 
-                'b' => array(), 
-                'u' => array(), 
-                'h1' => array(), 
-                'h2' => array(), 
-                's' => array(), 
-                'blockquote' => array() 
-            );
-            $body = isset($_POST['body']) ? wp_kses_post($_POST['body'], $allowed_tags) : '';
-            $body = str_replace("\t", '&nbsp;&nbsp;&nbsp;&nbsp;', $body);
-
-            update_option('ugp_email_subject', $subject);
-            update_option('ugp_email_cc', $cc);
-            update_option('ugp_email_body', $body);
-            
-            wp_send_json(array(
-                'status' => 'success',
-                'subject' => $subject,
-                'cc' => $cc,
-                'body' => wp_unslash($body)
-            ));
-
-        } catch (Exception $e) {
-
-            wp_send_json(array(
-                'status' => 'error',
-                'message' => $e->getMessage()
-            ));
-
-        }
-        
-    }
-    
-    /**
-     * Send a test email.
-     * 
-     * @since 1.0
-     */
-    public function ugp_settings_send_test_email() {
-        
-        if (!defined('DOING_AJAX') || !DOING_AJAX) {
-            wp_die();
-        }
-
-        /**
-         * Verify nonce
-         */
-        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'settings_nonce')) {
+        if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'delete_cache_nonce')) {
             wp_die();
         }  
 
         try{
 
-            add_filter('ugp_bypass_generate_pdf_security', '__return_true');
-            add_filter('ugp_bypass_recaptcha_security', '__return_true');
-            add_filter('ugp_send_test_email', '__return_true');
-            
-            $email = isset($_POST['email']) ? sanitize_email($_POST['email']) : '';
-
-            $test_data = array(
-                'name' => 'John Doe',
-                'email' => $email,
-                'calculator_data' => array(
-                    'number_of_operators' => '2',
-                    'number_of_units_in_fleet' => '17',
-                    'frequency_of_fueling' => '6',
-                    'round_trip_per_fueling' => '39',
-                    'estimated_gallons_per_fill' => '29',
-                    'average_hourly_rate' => '24',
-                    'every_gallon_you_pump_cost_an' => '$0.25',
-                    'estimated_gallons_consumed_per_week' => '1,831.14',
-                    'man_hours_allocated_to_fueling_per_week' => '133',
-                    'lost_asset_production_hours_per_week' => '12,951',
-                    'estimated_cost_of_self_fueling_per_week' => '$3,182',
-                    'yearly_fuel_savings' => '$165,485'
-                )
-            );
-
-            $_POST = $test_data;
             global $ugp;
-            $ugp->_ugp_generate_pdf_report->ugp_generate_pdf();
             
+            $ugp->_ugp_cron->ugp_delete_json_cache_execute();
+
             wp_send_json(array(
                 'status' => 'success',
             ));
@@ -319,7 +197,7 @@ class UGP_Settings
         }
         
     }
-
+    
     /**
      * Execute Model.
      *
@@ -327,25 +205,19 @@ class UGP_Settings
      * @access public
      */
     public function run() { 
-return;
+        
         // Add new menu
         add_action('admin_menu', array($this, 'custom_menu'), 10);
         
-        // Fetch recaptcha setting via ajax 
-        add_action("wp_ajax_ugp_settings_get_recaptcha_data", array($this, 'ugp_settings_get_recaptcha_data'));
+        // Fetch PADD colors via ajax 
+        add_action("wp_ajax_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
+        add_action("wp_ajax_nopriv_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
 
-        // Save recaptcha setting via ajax 
-        add_action("wp_ajax_ugp_settings_save_recaptcha_data", array($this, 'ugp_settings_save_recaptcha_data'));
-
-        // Fetch email setting via ajax 
-        add_action("wp_ajax_ugp_settings_get_email_data", array($this, 'ugp_settings_get_email_data'));
-
-        // Save email setting via ajax 
-        add_action("wp_ajax_ugp_settings_save_email_data", array($this, 'ugp_settings_save_email_data'));
-
-        // Send test email via ajax
-        add_action("wp_ajax_ugp_settings_send_test_email", array($this, 'ugp_settings_send_test_email'));
+        // Save PADD colors via ajax 
+        add_action("wp_ajax_ugp_settings_save_padd_colors", array($this, 'ugp_settings_save_padd_colors'));
         
+        // Delete cache
+        add_action("wp_ajax_ugp_settings_delete_cache", array($this, 'ugp_settings_delete_cache'));
     }
 
 }
