@@ -89,4 +89,5 @@ export default function usePADDSHover(state, stateName, PADDSPrices) {
   tooltipSpan.querySelector(".padd1a").innerHTML = padd1a;
   tooltipSpan.querySelector(".padd1b").innerHTML = padd1b;
   tooltipSpan.querySelector(".padd1c").innerHTML = padd1c;
+  return { padd };
 }

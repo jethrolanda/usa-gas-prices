@@ -11,11 +11,13 @@ const USAState = ({
 }) => {
   const onClick = (e) => {
     e.persist();
+
     var scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     var tooltipSpan = document.getElementById("tooltip-wrapper");
     tooltipSpan.style.display = "block";
-    usePADDSHover(state, stateName, PADDSPrices);
+
+    const { padd } = usePADDSHover(state, stateName, PADDSPrices);
 
     var pulse = document.getElementById("hover-state-pulse");
     pulse.style.display = "block";
@@ -23,8 +25,14 @@ const USAState = ({
     var tooltipSpan = document.getElementById("tooltip-wrapper");
     var x = e.clientX,
       y = e.clientY;
-    tooltipSpan.style.top = y + 20 + scrollTop + "px";
-    tooltipSpan.style.left = x + 20 + "px";
+
+    if (padd === "PADD 1") {
+      tooltipSpan.style.top = y + 30 + scrollTop + "px";
+      tooltipSpan.style.left = x - 180 + "px";
+    } else {
+      tooltipSpan.style.top = y + 30 + scrollTop + "px";
+      tooltipSpan.style.left = x - 20 + "px";
+    }
 
     var pulse = document.getElementById("hover-state-pulse");
     pulse.style.top = y - 35 + scrollTop + "px";

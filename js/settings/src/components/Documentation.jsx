@@ -21,12 +21,12 @@ const Documentation = () => {
         <ul>
           <li>Example:</li>
           <li>
-            <code>[display_current_average_price type='gasoline']</code> to
-            display the gasoline average price of the week.
+            <code>[usa_current_average_price type='gasoline']</code> to display
+            the gasoline average price of the week.
           </li>
           <li>
-            <code>[display_current_average_price type='diesel']</code> to
-            display the diesel average price of the week.
+            <code>[usa_current_average_price type='diesel']</code> to display
+            the diesel average price of the week.
           </li>
         </ul>
         <h4>Screenshot:</h4>

@@ -1,4 +1,7 @@
 <?php
+
+namespace UGP\Plugin;
+
 /**
  * Plugins custom settings page that adheres to wp standard
  * see: https://developer.wordpress.org/plugins/settings/custom-settings-page/
@@ -11,7 +14,7 @@ defined('ABSPATH') || exit;
 /**
  * WP Settings Class.
  */
-class UGP_Settings
+class Settings
 {
 
     /**
@@ -30,25 +33,48 @@ class UGP_Settings
         'padd_4' => "#8bc4d2",
         'padd_5' => "#265997"
     );
-    
+
+    /**
+     * Class constructor.
+     *
+     * @since 1.0.0
+     */
+    public function __construct()
+    {
+        // Add new menu
+        add_action('admin_menu', array($this, 'custom_menu'), 10);
+
+        // Fetch PADD colors via ajax 
+        add_action("wp_ajax_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
+        add_action("wp_ajax_nopriv_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
+
+        // Save PADD colors via ajax 
+        add_action("wp_ajax_ugp_settings_save_padd_colors", array($this, 'ugp_settings_save_padd_colors'));
+
+        // Delete cache
+        add_action("wp_ajax_ugp_settings_delete_cache", array($this, 'ugp_settings_delete_cache'));
+    }
+
     /**
      * Main Instance.
      * 
      * @since 1.0
      */
-    public static function instance() {
+    public static function instance()
+    {
         if (is_null(self::$_instance)) {
             self::$_instance = new self();
         }
         return self::$_instance;
     }
-    
+
     /**
      * Add custom wp admin menu.
      * 
      * @since 1.0
      */
-    public function custom_menu() {
+    public function custom_menu()
+    {
         add_menu_page(
             'Gas Prices',
             'Gas Prices',
@@ -58,19 +84,21 @@ class UGP_Settings
             'dashicons-media-spreadsheet'
         );
     }
-    
+
     /**
      * Display content to the new added custom wp admin menu.
      * 
      * @since 1.0
      */
-    public function gas_prices_settings_page() {
-      ?>
+    public function gas_prices_settings_page()
+    {
+?>
         <div class="wrap">
             <div id="gas-prices-settings">
                 <h2>Loading...</h2>
             </div>
-        </div><?php
+        </div>
+<?php
     }
 
     /**
@@ -78,8 +106,9 @@ class UGP_Settings
      * 
      * @since 1.0
      */
-    public function ugp_settings_fetch_padd_colors() {
-        
+    public function ugp_settings_fetch_padd_colors()
+    {
+
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
         }
@@ -89,13 +118,13 @@ class UGP_Settings
          */
         if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'colors_nonce')) {
             wp_die();
-        }  
+        }
 
-        try{
-            
+        try {
+
             $colors = get_option('ugp_padd_colors');
-            
-            if(empty($colors)){
+
+            if (empty($colors)) {
                 $colors = $this->colors;
             }
 
@@ -103,16 +132,13 @@ class UGP_Settings
                 'status' => 'success',
                 'colors' => $colors
             ));
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             wp_send_json(array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             ));
-
         }
-        
     }
 
     /**
@@ -120,8 +146,9 @@ class UGP_Settings
      * 
      * @since 1.0
      */
-    public function ugp_settings_save_padd_colors() {
-        
+    public function ugp_settings_save_padd_colors()
+    {
+
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
         }
@@ -131,13 +158,13 @@ class UGP_Settings
          */
         if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'colors_nonce')) {
             wp_die();
-        }  
+        }
 
-        try{
+        try {
 
             $colors = isset($_POST['data']) ? $_POST['data'] : array();
-            
-            if(empty($colors)){
+
+            if (empty($colors)) {
                 $colors = $this->colors;
             }
 
@@ -147,16 +174,13 @@ class UGP_Settings
                 'status' => 'success',
                 'colors' => $colors
             ));
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             wp_send_json(array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             ));
-
         }
-        
     }
 
     /**
@@ -164,8 +188,9 @@ class UGP_Settings
      * 
      * @since 1.0
      */
-    public function ugp_settings_delete_cache() {
-        
+    public function ugp_settings_delete_cache()
+    {
+
         if (!defined('DOING_AJAX') || !DOING_AJAX) {
             wp_die();
         }
@@ -175,49 +200,23 @@ class UGP_Settings
          */
         if (isset($_POST['nonce']) && !wp_verify_nonce($_POST['nonce'], 'delete_cache_nonce')) {
             wp_die();
-        }  
+        }
 
-        try{
+        try {
 
             global $ugp;
-            
-            $ugp->_ugp_cron->ugp_delete_json_cache_execute();
+
+            $ugp->cron->ugp_delete_json_cache_execute();
 
             wp_send_json(array(
                 'status' => 'success',
             ));
-
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             wp_send_json(array(
                 'status' => 'error',
                 'message' => $e->getMessage()
             ));
-
         }
-        
     }
-    
-    /**
-     * Execute Model.
-     *
-     * @since 1.0
-     * @access public
-     */
-    public function run() { 
-        
-        // Add new menu
-        add_action('admin_menu', array($this, 'custom_menu'), 10);
-        
-        // Fetch PADD colors via ajax 
-        add_action("wp_ajax_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
-        add_action("wp_ajax_nopriv_ugp_settings_fetch_padd_colors", array($this, 'ugp_settings_fetch_padd_colors'));
-
-        // Save PADD colors via ajax 
-        add_action("wp_ajax_ugp_settings_save_padd_colors", array($this, 'ugp_settings_save_padd_colors'));
-        
-        // Delete cache
-        add_action("wp_ajax_ugp_settings_delete_cache", array($this, 'ugp_settings_delete_cache'));
-    }
-
 }

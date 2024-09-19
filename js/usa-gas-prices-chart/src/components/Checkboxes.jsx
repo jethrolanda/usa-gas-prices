@@ -67,7 +67,15 @@ const Checkboxes = ({ location, attributes }) => {
   }, []);
 
   return (
-    <Checkbox.Group options={options} value={checked} onChange={onChange} />
+    <Checkbox.Group
+      options={options}
+      value={checked}
+      onChange={onChange}
+      size="large"
+      style={{
+        gap: "10px"
+      }}
+    />
   );
 };
 export default Checkboxes;

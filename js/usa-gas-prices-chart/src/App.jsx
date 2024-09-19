@@ -52,7 +52,7 @@ const App = ({ attributes }) => {
 
   return (
     <>
-      <p style={{ fontWeight: "bold", margin: "0px" }}>{title}</p>
+      <h2>{title}</h2>
       <span>{attributes?.subtitle}</span>
       <Checkboxes location={attributes?.location} attributes={attributes} />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
