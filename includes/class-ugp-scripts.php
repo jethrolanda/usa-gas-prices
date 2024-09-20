@@ -62,6 +62,30 @@ class Scripts
 
         global $post;
 
+        // MAIN STYLE
+        wp_register_style('ugp-style', UGP_CSS_ROOT_URL . 'style.min.css');
+
+        // USA GAS PRICES CHART
+        wp_register_style('usa-gas-prices-chart-style', UGP_JS_ROOT_URL . 'usa-gas-prices-chart/build/index.css');
+        wp_register_script('usa-gas-prices-chart-script', UGP_JS_ROOT_URL . 'usa-gas-prices-chart/build/index.js', array('wp-element', 'wp-i18n'), '1.0.0', true);
+        wp_localize_script('usa-gas-prices-chart-script', 'ugp_gas_prices_chart', array(
+            'rest_url'   => esc_url_raw(get_rest_url()),
+            'nonce' => wp_create_nonce('wp_rest'),
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'colors_nonce' => wp_create_nonce('colors_nonce'),
+        ));
+
+        // USA PADD PRICES
+        wp_register_style('usa-padd-prices-style', UGP_JS_ROOT_URL . 'usa-padd-prices/build/index.css');
+        wp_register_script('usa-padd-prices-script', UGP_JS_ROOT_URL . 'usa-padd-prices/build/index.js', array('wp-element', 'wp-i18n'), '1.0.0', true);
+        wp_localize_script('usa-padd-prices-script', 'ugp_padd_prices', array(
+            'rest_url'   => esc_url_raw(get_rest_url()),
+            'nonce' => wp_create_nonce('wp_rest'),
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'gas_and_diesel_week_data_nonce' => wp_create_nonce('gas_and_diesel_week_data_nonce'),
+            'colors_nonce' => wp_create_nonce('colors_nonce'),
+        ));
+
         $usa_gas_prices_chart_exist = false;
         $usa_gas_prices_table_exist = false;
         $display_current_average_price_exist = false;
@@ -91,7 +115,7 @@ class Scripts
         }
 
         if ($usa_gas_prices_chart_exist || $usa_gas_prices_table_exist || $display_current_average_price_exist || $usa_padd_prices_exist) {
-            wp_enqueue_style('ugp-style', UGP_CSS_ROOT_URL . 'style.min.css');
+            wp_enqueue_style('ugp-style');
         }
 
         if ($usa_gas_prices_chart_exist || ($post && has_shortcode($post->post_content, 'usa_gas_prices_chart'))) {
@@ -126,14 +150,8 @@ class Scripts
     public function gas_prices_chart_scripts()
     {
 
-        wp_enqueue_style('usa-gas-prices-chart-style', UGP_JS_ROOT_URL . 'usa-gas-prices-chart/build/index.css');
-        wp_enqueue_script('usa-gas-prices-chart-script', UGP_JS_ROOT_URL . 'usa-gas-prices-chart/build/index.js', array('wp-element', 'wp-i18n'), '1.0.0', true);
-        wp_localize_script('usa-gas-prices-chart-script', 'ugp_gas_prices_chart', array(
-            'rest_url'   => esc_url_raw(get_rest_url()),
-            'nonce' => wp_create_nonce('wp_rest'),
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'colors_nonce' => wp_create_nonce('colors_nonce'),
-        ));
+        wp_enqueue_style('usa-gas-prices-chart-style');
+        wp_enqueue_script('usa-gas-prices-chart-script');
     }
 
     /**
@@ -144,8 +162,8 @@ class Scripts
     public function usa_padd_prices_scripts()
     {
 
-        wp_enqueue_style('usa-padd-prices-style', UGP_JS_ROOT_URL . 'usa-padd-prices/build/index.css');
-        wp_enqueue_script('usa-padd-prices-script', UGP_JS_ROOT_URL . 'usa-padd-prices/build/index.js', array('wp-element', 'wp-i18n'), '1.0.0', true);
+        wp_enqueue_style('usa-padd-prices-style');
+        wp_enqueue_script('usa-padd-prices-script');
         wp_localize_script('usa-padd-prices-script', 'ugp_padd_prices', array(
             'rest_url'   => esc_url_raw(get_rest_url()),
             'nonce' => wp_create_nonce('wp_rest'),
