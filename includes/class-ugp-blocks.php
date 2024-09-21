@@ -59,8 +59,9 @@ class Blocks
   public function create_block_blocks_block_init()
   {
     register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/usa-padd-prices');
-    // register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/fuel_savings_pdf_report');
-    // register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/fuel_savings_pdf_report_for_salesperson');
+    register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/usa-gas-prices-table');
+    register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/usa-current-average-gas-price');
+    register_block_type(UGP_BLOCKS_ROOT_DIR . 'build/usa-gas-prices-chart');
   }
 
   public function register_new_category($categories)

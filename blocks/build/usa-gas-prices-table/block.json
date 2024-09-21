@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "usa-gas-prices/usa-padd-prices",
+  "name": "usa-gas-prices/usa-gas-prices-table",
   "version": "0.1.0",
-  "title": "USA Padd Prices",
+  "title": "USA Gas Prices Table",
   "category": "usa-gas-prices-blocks",
   "icon": "media-interactive",
   "description": "An interactive block with the Interactivity API",

@@ -14,10 +14,7 @@
 wp_enqueue_style('ugp-style');
 wp_enqueue_style('usa-padd-prices-style');
 wp_enqueue_script('usa-padd-prices-script');
-global $ugp;
 ?>
 
 
-	<?php echo do_shortcode('[usa_padd_prices]') ?>
-	<?php //echo $ugp->shortcodes->usa_padd_prices(array()); 
-	?>
+	<?php echo do_shortcode('[usa_padd_prices]') ?> 
