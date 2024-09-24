@@ -5,6 +5,29 @@
   "version": "0.1.0",
   "title": "USA Current Average Gas Price",
   "category": "usa-gas-prices-blocks",
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "answers": {
+      "type": "array",
+      "default": [
+        ""
+      ]
+    },
+    "correctAnswer": {
+      "type": "number",
+      "default": ""
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#EBEBEB"
+    },
+    "theAlignment": {
+      "type": "string",
+      "default": "left"
+    }
+  },
   "icon": "media-interactive",
   "description": "An interactive block with the Interactivity API",
   "example": {},

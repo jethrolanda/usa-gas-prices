@@ -1,3 +1,21 @@
+import {
+  TextControl,
+  Flex,
+  FlexBlock,
+  FlexItem,
+  Button,
+  Icon,
+  PanelBody,
+  PanelRow,
+  ColorPicker
+} from "@wordpress/components";
+import {
+  InspectorControls,
+  BlockControls,
+  AlignmentToolbar
+} from "@wordpress/block-editor";
+// import { ChromePicker } from "react-color";
+
 /**
  * Retrieves the translation of text.
  *
@@ -25,17 +43,43 @@ import { useBlockProps } from "@wordpress/block-editor";
  *
  * @return {Element} Element to render.
  */
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit(props) {
   const blockProps = useBlockProps();
 
+  function setType(value) {
+    props.setAttributes({ type: value });
+  }
+
   return (
-    <div {...blockProps} class="todays-gas-price-average">
-      <div>
-        <b>TODAYS GAS PRICE</b>
-        <p>NATIONAL AVERAGE GASOLINE PRICE</p>
-        <p>AS OF 09/16/24</p>
+    <div {...blockProps}>
+      <div class="todays-gas-price-average">
+        <BlockControls>
+          <AlignmentToolbar
+            value={props.attributes.theAlignment}
+            onChange={(x) => props.setAttributes({ theAlignment: x })}
+          />
+        </BlockControls>
+        <InspectorControls>
+          <PanelBody title="Background Color" initialOpen={true}>
+            <PanelRow>
+              asd
+              {/* <ChromePicker
+                color={props.attributes.bgColor}
+                onChangeComplete={(x) =>
+                  props.setAttributes({ bgColor: x.hex })
+                }
+                disableAlpha={true}
+              /> */}
+            </PanelRow>
+          </PanelBody>
+        </InspectorControls>
+        <div>
+          <b>TODAYS GAS PRICE</b>
+          <p>NATIONAL AVERAGE GASOLINE PRICE</p>
+          <p>AS OF 09/16/24</p>
+        </div>
+        <div>$3.18</div>
       </div>
-      <div>$3.18</div>
     </div>
   );
 }
