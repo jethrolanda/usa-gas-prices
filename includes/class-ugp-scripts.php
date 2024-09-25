@@ -84,6 +84,7 @@ class Scripts
             'ajax_url' => admin_url('admin-ajax.php'),
             'gas_and_diesel_week_data_nonce' => wp_create_nonce('gas_and_diesel_week_data_nonce'),
             'colors_nonce' => wp_create_nonce('colors_nonce'),
+            'is_frontend' => !is_admin()
         ));
 
         $usa_gas_prices_chart_exist = false;
@@ -92,10 +93,10 @@ class Scripts
         $usa_padd_prices_exist = false;
 
         if ($post) {
-            $usa_gas_prices_chart_exist = has_shortcode($post->post_content, 'usa_gas_prices_chart');
-            $usa_gas_prices_table_exist = has_shortcode($post->post_content, 'usa_gas_prices_table');
-            $display_current_average_price_exist = has_shortcode($post->post_content, 'display_current_average_price');
-            $usa_padd_prices_exist = has_shortcode($post->post_content, 'usa_padd_prices');
+            $usa_gas_prices_chart_exist = has_shortcode($post->post_content, 'usa_gas_prices_chart') || has_block('usa-gas-prices/usa-gas-prices-chart', $post->post_content);
+            $usa_gas_prices_table_exist = has_shortcode($post->post_content, 'usa_gas_prices_table') || has_block('usa-gas-prices/usa-gas-prices-table', $post->post_content);
+            $display_current_average_price_exist = has_shortcode($post->post_content, 'display_current_average_price') || has_block('usa-gas-prices/usa-current-average-gas-price', $post->post_content);
+            $usa_padd_prices_exist = has_shortcode($post->post_content, 'usa_padd_prices') || has_block('usa-gas-prices/usa-padd-prices', $post->post_content);
         }
 
         if ($post && $post->ID) {
@@ -164,13 +165,6 @@ class Scripts
 
         wp_enqueue_style('usa-padd-prices-style');
         wp_enqueue_script('usa-padd-prices-script');
-        wp_localize_script('usa-padd-prices-script', 'ugp_padd_prices', array(
-            'rest_url'   => esc_url_raw(get_rest_url()),
-            'nonce' => wp_create_nonce('wp_rest'),
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'gas_and_diesel_week_data_nonce' => wp_create_nonce('gas_and_diesel_week_data_nonce'),
-            'colors_nonce' => wp_create_nonce('colors_nonce'),
-        ));
     }
 
     /**

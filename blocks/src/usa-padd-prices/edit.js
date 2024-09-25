@@ -29,6 +29,8 @@ export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps();
 
   return (
-    <p {...blockProps}>{__("Blocks – hello from the editor!", "blocks")}</p>
+    <div {...blockProps}>
+      <div id="usa-padd-prices" data-padd-prices-attr='{"width":"100%"}' />
+    </div>
   );
 }
