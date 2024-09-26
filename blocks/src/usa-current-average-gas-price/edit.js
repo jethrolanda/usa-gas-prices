@@ -1,3 +1,5 @@
+import { useEffect, useState } from "@wordpress/element";
+import apiFetch from "@wordpress/api-fetch";
 import {
   TextControl,
   Flex,
@@ -7,13 +9,13 @@ import {
   Icon,
   PanelBody,
   PanelRow,
-  ColorPicker
+  ColorPicker,
+  CheckboxControl,
+  RadioControl,
+  ToggleControl,
+  SelectControl
 } from "@wordpress/components";
-import {
-  InspectorControls,
-  BlockControls,
-  AlignmentToolbar
-} from "@wordpress/block-editor";
+
 // import { ChromePicker } from "react-color";
 
 /**
@@ -29,7 +31,13 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import {
+  InspectorControls,
+  BlockControls,
+  AlignmentToolbar,
+  RichText,
+  useBlockProps
+} from "@wordpress/block-editor";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -46,9 +54,67 @@ import { useBlockProps } from "@wordpress/block-editor";
 export default function Edit(props) {
   const blockProps = useBlockProps();
 
+  const [data, setData] = useState([]);
+  const { attributes, setAttributes } = props;
+  const {
+    content,
+    checkboxField,
+    radioField,
+    textField,
+    toggleField,
+    selectField
+  } = attributes;
+
   function setType(value) {
     props.setAttributes({ type: value });
   }
+
+  function onChangeContent(newContent) {
+    setAttributes({ content: newContent });
+  }
+
+  function onChangeCheckboxField(newValue) {
+    setAttributes({ checkboxField: newValue });
+  }
+
+  function onChangeRadioField(newValue) {
+    setAttributes({ radioField: newValue });
+  }
+
+  function onChangeTextField(newValue) {
+    setAttributes({ textField: newValue });
+  }
+
+  function onChangeToggleField(newValue) {
+    setAttributes({ toggleField: newValue });
+  }
+
+  function onChangeSelectField(newValue) {
+    setAttributes({ selectField: newValue });
+  }
+
+  useEffect(() => {
+    // Submit ajax request
+    try {
+      const formData = new FormData();
+      formData.append("action", "ugp_get_usa_current_average_gas_price");
+      formData.append("type", radioField);
+      formData.append("nonce", "nonce");
+      const data = fetch(ugp_gas_prices_chart.ajax_url, {
+        method: "POST",
+        body: formData
+      })
+        .then((response) => response.json())
+        .then(({ status, data }) => {
+          if (status === "success") {
+            setData(data);
+          }
+        });
+      // console.log("Server data!", data);
+    } catch (e) {
+      // Something went wrong!
+    }
+  }, [radioField]);
 
   return (
     <div {...blockProps}>
@@ -60,25 +126,76 @@ export default function Edit(props) {
           />
         </BlockControls>
         <InspectorControls>
-          <PanelBody title="Background Color" initialOpen={true}>
-            <PanelRow>
-              asd
-              {/* <ChromePicker
+          <PanelBody title="Settings" initialOpen={true}>
+            {/* <PanelRow> */}
+            {/* <ChromePicker
                 color={props.attributes.bgColor}
                 onChangeComplete={(x) =>
                   props.setAttributes({ bgColor: x.hex })
                 }
                 disableAlpha={true}
               /> */}
-            </PanelRow>
+            <RadioControl
+              label="Type"
+              selected={radioField}
+              options={[
+                { label: "Gasoline", value: "gasoline" },
+                { label: "Diesel", value: "diesel" }
+              ]}
+              onChange={onChangeRadioField}
+            />
+            <CheckboxControl
+              __nextHasNoMarginBottom
+              heading="Checkbox Field"
+              label="Tick Me"
+              help="Additional help text"
+              checked={checkboxField}
+              onChange={onChangeCheckboxField}
+            />
+
+            <TextControl
+              __nextHasNoMarginBottom
+              label="Text Field"
+              help="Additional help text"
+              value={textField}
+              onChange={onChangeTextField}
+            />
+            <ToggleControl
+              __nextHasNoMarginBottom
+              label="Toggle Field"
+              checked={toggleField}
+              onChange={onChangeToggleField}
+            />
+            <SelectControl
+              __nextHasNoMarginBottom
+              label="Select Control"
+              value={selectField}
+              options={[
+                { value: "a", label: "Option A" },
+                { value: "b", label: "Option B" },
+                { value: "c", label: "Option C" }
+              ]}
+              onChange={onChangeSelectField}
+            />
+            {/* </PanelRow> */}
           </PanelBody>
         </InspectorControls>
         <div>
-          <b>TODAYS GAS PRICE</b>
-          <p>NATIONAL AVERAGE GASOLINE PRICE</p>
-          <p>AS OF 09/16/24</p>
+          {radioField === "gasoline" ? (
+            <>
+              <b>TODAYS GAS PRICE</b>
+              <p>NATIONAL AVERAGE GASOLINE PRICE</p>
+            </>
+          ) : (
+            <>
+              <b>TODAYS DIESEL PRICE</b>
+              <p>NATIONAL AVERAGE ROAD DIESEL PRICE</p>
+            </>
+          )}
+
+          <p>AS OF {data.date}</p>
         </div>
-        <div>$3.18</div>
+        <div>{data.price}</div>
       </div>
     </div>
   );

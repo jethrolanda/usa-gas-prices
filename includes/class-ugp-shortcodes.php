@@ -34,12 +34,16 @@ class Shortcodes
     {
         // Current Gas and Diesel price shortcode
         add_shortcode('usa_current_average_gas_price', array($this, 'usa_current_average_gas_price_shortcode'));
+        add_action("wp_ajax_ugp_get_usa_current_average_gas_price", array($this, 'ugp_get_usa_current_average_gas_price'));
 
         // USA gas prices table shortcode
         add_shortcode('usa_gas_prices_table', array($this, 'usa_gas_prices_table_shortcode'));
+        add_action("wp_ajax_ugp_get_usa_gas_prices_table_shortcode", array($this, 'ugp_get_usa_gas_prices_table_shortcode'));
 
         // USA gas prices chart shortcode
         add_shortcode('usa_gas_prices_chart', array($this, 'usa_gas_prices_chart_shortcode'));
+        add_action("wp_ajax_ugp_get_usa_gas_prices_chart_shortcode", array($this, 'ugp_get_usa_gas_prices_chart_shortcode'));
+
         add_action("wp_ajax_ugp_get_gasoline_year_data", array($this, 'ugp_get_gasoline_year_data'));
         add_action("wp_ajax_nopriv_ugp_get_gasoline_year_data", array($this, 'ugp_get_gasoline_year_data'));
         add_action("wp_ajax_ugp_get_diesel_year_data", array($this, 'ugp_get_diesel_year_data'));
@@ -65,6 +69,28 @@ class Shortcodes
         return self::$_instance;
     }
 
+
+    public function ugp_get_usa_gas_prices_table_shortcode()
+    {
+        try {
+            $type = isset($_POST['type']) ? $_POST['type'] : 'gasoline';
+            $data = $this->usa_gas_prices_table_shortcode(array(
+                'type' => $type,
+                'dataonly' => true
+            ));
+            wp_send_json(array(
+                'status' => 'success',
+                'data' => $data
+            ));
+        } catch (\Exception $e) {
+
+            wp_send_json(array(
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ));
+        }
+    }
+
     /**
      * USA gas prices table
      *
@@ -75,7 +101,10 @@ class Shortcodes
     {
 
         $atts = shortcode_atts(array(
-            'type' => 'gasoline'
+            'type' => 'gasoline',
+            'dataonly' => false,
+            'title' => '',
+            'subtitle' => ''
         ), $atts);
 
         extract($atts);
@@ -174,6 +203,27 @@ class Shortcodes
         return $content;
     }
 
+
+    public function ugp_get_usa_gas_prices_chart_shortcode()
+    {
+        try {
+            $type = isset($_POST['type']) ? $_POST['type'] : 'gasoline';
+            $data = $this->usa_gas_prices_chart_shortcode(array(
+                'type' => $type
+            ));
+            wp_send_json(array(
+                'status' => 'success',
+                'data' => $data
+            ));
+        } catch (\Exception $e) {
+
+            wp_send_json(array(
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ));
+        }
+    }
+
     /**
      * USA gas prices chart
      *
@@ -186,10 +236,10 @@ class Shortcodes
         $atts = shortcode_atts(array(
             'type' => 'gasoline',
             'gasoline' => array(
-                'title' => 'Regular Gasoline Prices'
+                'title' => $atts['title'] !== '' ? $atts['title'] : 'Regular Gasoline Prices'
             ),
             'diesel' => array(
-                'title' => 'On-Highway Diesel Fuel Prices'
+                'title' => $atts['title'] !== '' ? $atts['title'] : 'On-Highway Diesel Fuel Prices'
             ),
             'subtitle' => '(dollars per gallon)',
             'location' => $this->location
@@ -369,6 +419,27 @@ class Shortcodes
         }
     }
 
+    public function ugp_get_usa_current_average_gas_price()
+    {
+        try {
+            $type = isset($_POST['type']) ? $_POST['type'] : 'gasoline';
+            $data = $this->usa_current_average_gas_price_shortcode(array(
+                'type' => $type,
+                'dataonly' => true
+            ));
+            wp_send_json(array(
+                'status' => 'success',
+                'data' => $data
+            ));
+        } catch (\Exception $e) {
+
+            wp_send_json(array(
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ));
+        }
+    }
+
     /**
      * Display current average gas prices
      *
@@ -379,7 +450,8 @@ class Shortcodes
     {
 
         $atts = shortcode_atts(array(
-            'type' => 'gasoline'
+            'type' => 'gasoline',
+            'dataonly' => false
         ), $atts);
 
         extract($atts);
@@ -458,6 +530,15 @@ class Shortcodes
         if (!empty($data) && isset($data['U.S.'])) {
             $price = number_format((float)$data['U.S.'][0]['value'], 2, '.', '');
             $date = $data['U.S.'][0]['period'];
+        }
+
+        // For Backend block editor
+        // Return data only
+        if ($dataonly) {
+            return array(
+                'date' => $date,
+                'price' => $price
+            );
         }
 
     ?><div class="todays-gas-price-average">

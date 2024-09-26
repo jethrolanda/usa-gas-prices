@@ -26,6 +26,28 @@
     "theAlignment": {
       "type": "string",
       "default": "left"
+    },
+    "content": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "checkboxField": {
+      "type": "boolean",
+      "default": true
+    },
+    "radioField": {
+      "type": "string",
+      "default": "gasoline"
+    },
+    "textField": {
+      "type": "string"
+    },
+    "toggleField": {
+      "type": "boolean"
+    },
+    "selectField": {
+      "type": "string"
     }
   },
   "icon": "media-interactive",

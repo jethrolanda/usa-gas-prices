@@ -1,3 +1,6 @@
+import { useEffect, useState } from "@wordpress/element";
+import { PanelBody, RadioControl } from "@wordpress/components";
+
 /**
  * Retrieves the translation of text.
  *
@@ -11,7 +14,11 @@ import { __ } from "@wordpress/i18n";
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from "@wordpress/block-editor";
+import {
+  InspectorControls,
+  useBlockProps,
+  RichText
+} from "@wordpress/block-editor";
 
 /**
  * The edit function describes the structure of your block in the context of the
@@ -28,12 +35,68 @@ import { useBlockProps } from "@wordpress/block-editor";
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps();
 
+  const [element, setElement] = useState("");
+  const { title, subtitle, typeField } = attributes;
+
+  function onChangeRadioField(newValue) {
+    setAttributes({ typeField: newValue });
+  }
+
+  useEffect(() => {
+    // Submit ajax request
+    try {
+      const formData = new FormData();
+      formData.append("action", "ugp_get_usa_gas_prices_chart_shortcode");
+      formData.append("type", typeField);
+      formData.append("nonce", "nonce");
+      const data = fetch(ugp_gas_prices_chart.ajax_url, {
+        method: "POST",
+        body: formData
+      })
+        .then((response) => response.json())
+        .then(({ status, data }) => {
+          if (status === "success") {
+            setElement(data);
+          }
+          // console.log(data);
+        });
+      // console.log("Server data!", data);
+    } catch (e) {
+      // Something went wrong!
+    }
+  }, [typeField]);
+
   return (
     <div {...blockProps}>
-      <div
+      <InspectorControls>
+        <PanelBody title="Settings" initialOpen={true}>
+          <RadioControl
+            label="Type"
+            selected={typeField}
+            options={[
+              { label: "Gasoline", value: "gasoline" },
+              { label: "Diesel", value: "diesel" }
+            ]}
+            onChange={onChangeRadioField}
+          />
+        </PanelBody>
+      </InspectorControls>
+      {typeField === "gasoline" ? (
+        <div
+          className="usa-gas-prices-chart"
+          data-gas-prices-attr='{"type":"gasoline","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+        />
+      ) : (
+        <div
+          className="usa-gas-prices-chart"
+          data-gas-prices-attr='{"type":"diesel","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+        />
+      )}
+      {/* <div
         className="usa-gas-prices-chart"
         data-gas-prices-attr='{"type":"gasoline","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
-      />
+      /> */}
+      {/* {element && <div dangerouslySetInnerHTML={{ __html: element }} />} */}
     </div>
   );
 }

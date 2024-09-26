@@ -11,6 +11,7 @@
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
 
+$type = isset($attributes['radioField']) ? $attributes['radioField'] : 'gasoline';
 ?>
-	<?php echo do_shortcode('[usa_current_average_gas_price]') ?> 
+	<?php echo do_shortcode('[usa_current_average_gas_price type="' . $type . '"]') ?> 
 

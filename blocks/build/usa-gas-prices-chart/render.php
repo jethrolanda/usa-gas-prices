@@ -13,5 +13,10 @@
 
 wp_enqueue_style('usa-gas-prices-chart-style');
 wp_enqueue_script('usa-gas-prices-chart-script');
+
+$type = isset($attributes['typeField']) ? $attributes['typeField'] : 'gasoline';
+$title = isset($attributes['title']) ? $attributes['title'] : '';
+$subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
+
 ?>
-	<?php echo do_shortcode('[usa_gas_prices_chart]') ?> 
+	<?php echo do_shortcode('[usa_gas_prices_chart type="' . $type . '" title="' . $title . '" subtitle="' . $subtitle . '"]') ?> 

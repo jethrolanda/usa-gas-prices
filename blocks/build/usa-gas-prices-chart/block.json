@@ -5,6 +5,19 @@
   "version": "0.1.0",
   "title": "USA Gas Prices Chart",
   "category": "usa-gas-prices-blocks",
+  "attributes": {
+    "typeField": {
+      "type": "string",
+      "default": "gasoline"
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtitle": {
+      "type": "string",
+      "default": "(dollars per gallon)"
+    }
+  },
   "icon": "media-interactive",
   "description": "An interactive block with the Interactivity API",
   "example": {},

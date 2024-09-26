@@ -10,6 +10,8 @@
  *
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
-
+$type = isset($attributes['typeField']) ? $attributes['typeField'] : 'gasoline';
+$title = isset($attributes['title']) ? $attributes['title'] : '';
+$subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
 ?>
-	<?php echo do_shortcode('[usa_gas_prices_table]') ?> 
+	<?php echo do_shortcode('[usa_gas_prices_table type="' . $type . '" title="' . $title . '" subtitle="' . $subtitle . '"]') ?> 
