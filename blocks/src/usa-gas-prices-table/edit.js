@@ -46,6 +46,7 @@ export default function Edit({ attributes, setAttributes }) {
   function onChangeTitle(title) {
     setAttributes({ title });
   }
+
   function onChangeSubTitle(subtitle) {
     setAttributes({ subtitle });
   }

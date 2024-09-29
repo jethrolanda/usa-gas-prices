@@ -76,7 +76,8 @@
   }
 }
 
-.usa-gas-prices-chart{
+.usa-gas-prices-chart,
+.usa-gas-prices-chart-wrapper{
   & > span{
     color: $gray;
   }

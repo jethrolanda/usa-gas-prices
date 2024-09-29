@@ -42,6 +42,23 @@ export default function Edit({ attributes, setAttributes }) {
     setAttributes({ typeField: newValue });
   }
 
+  function onChangeTitle(title) {
+    setAttributes({ title });
+  }
+
+  function onChangeSubTitle(subtitle) {
+    setAttributes({ subtitle });
+  }
+
+  useEffect(() => {
+    setAttributes({
+      title:
+        typeField === "gasoline"
+          ? "Regular Gasoline Prices"
+          : "On-Highway Diesel Fuel Prices"
+    });
+  }, [typeField]);
+
   useEffect(() => {
     // Submit ajax request
     try {
@@ -72,6 +89,7 @@ export default function Edit({ attributes, setAttributes }) {
         <PanelBody title="Settings" initialOpen={true}>
           <RadioControl
             label="Type"
+            help="Note: Please reload the editor after updating to see the change take effect."
             selected={typeField}
             options={[
               { label: "Gasoline", value: "gasoline" },
@@ -81,22 +99,36 @@ export default function Edit({ attributes, setAttributes }) {
           />
         </PanelBody>
       </InspectorControls>
-      {typeField === "gasoline" ? (
-        <div
-          className="usa-gas-prices-chart"
-          data-gas-prices-attr='{"type":"gasoline","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+      <div className="usa-gas-prices-chart-wrapper">
+        <RichText
+          key="editable"
+          tagName="h2"
+          onChange={onChangeTitle}
+          value={title}
         />
-      ) : (
-        <div
-          className="usa-gas-prices-chart"
-          data-gas-prices-attr='{"type":"diesel","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+        <RichText
+          key="editable"
+          tagName="span"
+          onChange={onChangeSubTitle}
+          value={subtitle}
         />
-      )}
-      {/* <div
+        {typeField === "gasoline" ? (
+          <div
+            className="usa-gas-prices-chart"
+            data-gas-prices-attr='{"type":"gasoline","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+          />
+        ) : (
+          <div
+            className="usa-gas-prices-chart"
+            data-gas-prices-attr='{"type":"diesel","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
+          />
+        )}
+        {/* <div
         className="usa-gas-prices-chart"
         data-gas-prices-attr='{"type":"gasoline","gasoline":{"title":"Regular Gasoline Prices"},"diesel":{"title":"On-Highway Diesel Fuel Prices"},"subtitle":"(dollars per gallon)","location":{"U.S.":"U.S.","East Coast":"PADD 1","New England":"PADD 1A","Central Atlantic":"PADD 1B","Lower Atlantic":"PADD 1C","Midwest":"PADD 2","Gulf Coast":"PADD 3","Rocky Mountain":"PADD 4","West Coast":"PADD 5","California":"CALIFORNIA"}}'
       /> */}
-      {/* {element && <div dangerouslySetInnerHTML={{ __html: element }} />} */}
+        {/* {element && <div dangerouslySetInnerHTML={{ __html: element }} />} */}
+      </div>
     </div>
   );
 }

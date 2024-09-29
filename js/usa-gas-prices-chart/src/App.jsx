@@ -52,8 +52,8 @@ const App = ({ attributes }) => {
 
   return (
     <>
-      <h2>{title}</h2>
-      <span>{attributes?.subtitle}</span>
+      {/* <h2>{title}</h2>
+      <span>{attributes?.subtitle}</span> */}
       <Checkboxes location={attributes?.location} attributes={attributes} />
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
         <RadioButtons attributes={attributes} />

@@ -235,19 +235,21 @@ class Shortcodes
 
         $atts = shortcode_atts(array(
             'type' => 'gasoline',
-            'gasoline' => array(
-                'title' => $atts['title'] !== '' ? $atts['title'] : 'Regular Gasoline Prices'
-            ),
-            'diesel' => array(
-                'title' => $atts['title'] !== '' ? $atts['title'] : 'On-Highway Diesel Fuel Prices'
-            ),
+            'title' => $atts['type'] === 'gasoline' && $atts['title'] == "" ? 'Regular Gasoline Prices' : 'On-Highway Diesel Fuel Prices',
             'subtitle' => '(dollars per gallon)',
             'location' => $this->location
         ), $atts);
 
-        ob_start(); ?><div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars(json_encode($atts), ENT_QUOTES, 'UTF-8'); ?>">
-            <span>Loading...</span>
+        extract($atts);
+        ob_start(); ?>
+        <div class="usa-gas-prices-chart-wrapper">
+            <h2><?php echo $title; ?></h2>
+            <span><?php echo $subtitle; ?></span>
+            <div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars(json_encode($atts), ENT_QUOTES, 'UTF-8'); ?>">
+                <span>Loading...</span>
+            </div>
         </div>
+
     <?php
 
         $content = ob_get_clean();

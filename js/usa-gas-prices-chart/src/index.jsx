@@ -29,6 +29,7 @@ window.addEventListener("load", (event) => {
               }}
             >
               <App
+                domContainer={domContainer}
                 attributes={JSON.parse(
                   domContainer.attributes["data-gas-prices-attr"].value
                 )}
@@ -57,6 +58,7 @@ window.addEventListener("load", (event) => {
               }}
             >
               <App
+                domContainer={domContainer}
                 attributes={JSON.parse(
                   domContainer.attributes["data-gas-prices-attr"].value
                 )}
