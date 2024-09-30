@@ -22,8 +22,9 @@ window.addEventListener("load", (event) => {
                 Form: {},
                 Button: {},
                 Radio: {
-                  // colorText: "var(--paragraph-color)",
-                  // fontSize: "22px"
+                  colorText: "var(--paragraph-color)",
+                  fontFamily: "Roboto",
+                  fontSize: "22px"
                 }
               }
             }}
@@ -44,13 +45,17 @@ window.addEventListener("load", (event) => {
               token: {
                 // colorPrimary: "#A2CD3A",
                 // fontSize: 16
+                color: "var(--wp--preset--color--contrast-3)",
+                fontFamily: "var(--wp--preset--font-family--lato)",
+                fontSize: "var(--wp--preset--font-size--medium)"
               },
               components: {
                 Form: {},
                 Button: {},
                 Radio: {
-                  // colorText: "var(--paragraph-color)",
-                  // fontSize: "22px"
+                  color: "var(--wp--preset--color--contrast-3)",
+                  fontFamily: "var(--wp--preset--font-family--lato)",
+                  fontSize: "var(--wp--preset--font-size--medium)"
                 }
               }
             }}
