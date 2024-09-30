@@ -15,16 +15,15 @@ window.addEventListener("load", (event) => {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: "#A2CD3A",
-                fontSize: 16
+                // colorPrimary: "#A2CD3A",
+                // fontSize: 16
               },
               components: {
                 Form: {},
                 Button: {},
                 Radio: {
-                  colorText: "var(--paragraph-color)",
-                  fontFamily: "Roboto",
-                  fontSize: "22px"
+                  // colorText: "var(--paragraph-color)",
+                  // fontSize: "22px"
                 }
               }
             }}
@@ -43,16 +42,15 @@ window.addEventListener("load", (event) => {
           <ConfigProvider
             theme={{
               token: {
-                colorPrimary: "#A2CD3A",
-                fontSize: 16
+                // colorPrimary: "#A2CD3A",
+                // fontSize: 16
               },
               components: {
                 Form: {},
                 Button: {},
                 Radio: {
-                  colorText: "var(--paragraph-color)",
-                  fontFamily: "Roboto",
-                  fontSize: "22px"
+                  // colorText: "var(--paragraph-color)",
+                  // fontSize: "22px"
                 }
               }
             }}
