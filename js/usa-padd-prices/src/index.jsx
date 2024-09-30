@@ -15,8 +15,8 @@ window.addEventListener("load", (event) => {
           <ConfigProvider
             theme={{
               token: {
-                // colorPrimary: "#A2CD3A",
-                // fontSize: 16
+                colorPrimary: "#A2CD3A",
+                fontSize: 16
               },
               components: {
                 Form: {},
@@ -43,19 +43,16 @@ window.addEventListener("load", (event) => {
           <ConfigProvider
             theme={{
               token: {
-                // colorPrimary: "#A2CD3A",
-                // fontSize: 16
-                color: "var(--wp--preset--color--contrast-3)",
-                fontFamily: "var(--wp--preset--font-family--lato)",
-                fontSize: "var(--wp--preset--font-size--medium)"
+                colorPrimary: "#A2CD3A",
+                fontSize: 16
               },
               components: {
                 Form: {},
                 Button: {},
                 Radio: {
-                  color: "var(--wp--preset--color--contrast-3)",
-                  fontFamily: "var(--wp--preset--font-family--lato)",
-                  fontSize: "var(--wp--preset--font-size--medium)"
+                  colorText: "var(--paragraph-color)",
+                  fontFamily: "Roboto",
+                  fontSize: "22px"
                 }
               }
             }}
