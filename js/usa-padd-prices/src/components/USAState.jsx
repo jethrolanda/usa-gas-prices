@@ -31,7 +31,6 @@ const USAState = ({
     const element = document.getElementById("usa-padd-prices");
     const rect = element.getBoundingClientRect();
 
-    console.log(rect, e);
     // if (ugp_padd_prices.is_frontend == "1") {
     //   // v1
     //   if (padd === "PADD 1") {
@@ -50,7 +49,6 @@ const USAState = ({
       tooltipSpan.style.top = y - rect.y + 30 + "px";
       tooltipSpan.style.left = x - rect.x - 180 + "px";
     } else {
-      console.log(y, rect.y, scrollTop);
       tooltipSpan.style.top = y - rect.y + 30 + "px";
       tooltipSpan.style.left = x - rect.x - 20 + "px";
     }
