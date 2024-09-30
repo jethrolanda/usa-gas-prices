@@ -259,6 +259,10 @@ input[value='California'] + span.ant-checkbox-inner{
   font-size: inherit!important;
 }
 
+#usa-padd-prices{
+  position: relative;
+}
+
 @media only screen and (max-width: 691px) {
   .ct-shortcode{
     .usa-gas-prices-chart,
