@@ -12,8 +12,8 @@ const USAState = ({
   const onClick = (e) => {
     e.persist();
 
-    var scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
+    // var scrollTop =
+    //   document.documentElement.scrollTop || document.body.scrollTop;
     var tooltipSpan = document.getElementById("tooltip-wrapper");
     tooltipSpan.style.display = "block";
 
