@@ -244,7 +244,7 @@ class Shortcodes
         ob_start(); ?>
         <div class="usa-gas-prices-chart-wrapper">
             <h2><?php echo $title; ?></h2>
-            <span><?php echo $subtitle; ?></span>
+            <small><?php echo $subtitle; ?></small>
             <div class="usa-gas-prices-chart" data-gas-prices-attr="<?php echo htmlspecialchars(json_encode($atts), ENT_QUOTES, 'UTF-8'); ?>">
                 <span>Loading...</span>
             </div>
@@ -547,7 +547,7 @@ class Shortcodes
             <div>
                 <b><?php echo $type == 'gasoline' ? 'TODAYS GAS PRICE' : 'TODAYS DIESEL PRICE'; ?></b>
                 <p><?php echo $type == 'gasoline' ? 'NATIONAL AVERAGE GASOLINE PRICE' : 'NATIONAL AVERAGE ROAD DIESEL PRICE'; ?></p>
-                <p>AS OF <?php echo $date; ?></p>
+                <small>AS OF <?php echo $date; ?></small>
             </div>
             <div><?php echo '$' . $price; ?></div>
         </div>

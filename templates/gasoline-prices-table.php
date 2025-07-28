@@ -1,7 +1,7 @@
 <?php if (!$dataonly) { ?>
 	<div class="usa-gas-prices-wrapper">
 		<h2><?php echo $title ? $title : 'U.S. Regular Gasoline Prices'; ?></h2>
-		<span><?php echo $subtitle ? $subtitle : '(dollars per gallon)'; ?></span>
+		<small><?php echo $subtitle ? $subtitle : '(dollars per gallon)'; ?></small>
 	<?php } ?>
 
 	<div id="usa-gasoline-prices">
