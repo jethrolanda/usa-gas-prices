@@ -22,7 +22,7 @@ window.addEventListener("load", (event) => {
                   Button: {},
                   Radio: {
                     colorText: "var(--paragraph-color)",
-                    fontFamily: "Lato",
+                    fontFamily: "Lato, sans-serif",
                     fontSize: "22px"
                   }
                 }
@@ -51,7 +51,7 @@ window.addEventListener("load", (event) => {
                   Button: {},
                   Radio: {
                     colorText: "var(--paragraph-color)",
-                    fontFamily: "Lato",
+                    fontFamily: "Lato, sans-serif",
                     fontSize: "22px"
                   }
                 }
