@@ -86,8 +86,8 @@
     color: $base;
     margin: 0px;
   }
-  & > span{
-    color: $gray;
+  span, small{
+    color: $base;
   }
 }
 
@@ -189,6 +189,7 @@ input[value='California'] + span.ant-checkbox-inner{
     p{
       margin: 0px;
       font-size: 16px;
+      color: $base;
       &:first-of-type{
         // color: $accentthree;
       }
